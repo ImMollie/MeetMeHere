@@ -23,6 +23,7 @@ return new class extends Migration
             ->references('id')
             ->on('announcement');
             $table->timestamps();
+            //asd
         });
     }
 
