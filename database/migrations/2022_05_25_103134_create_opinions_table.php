@@ -14,19 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('opinions', function (Blueprint $table) {
-            $table->id();            
-            $table->unsignedBigInteger('userpoke_id');
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('poke');
+            $table->id();     
+            $table->string('opinionTypes');        
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('userpoke_id')
+            ->on('pokes');
+            $table->unsignedBigInteger('revieweduser_id');
             $table->foreign('revieweduser_id')
             ->references('id')
             ->on('users');            
             $table->unsignedBigInteger('poke_id');
             $table->foreign('poke_id')
             ->references('id')
-            ->on('poke');
+            ->on('pokes');
             $table->timestamps();
         });
     }

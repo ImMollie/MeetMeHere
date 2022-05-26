@@ -2,14 +2,16 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class UserFactory extends Factory
 {
+    protected $model = User::class;
     /**
      * Define the model's default state.
      *
@@ -18,7 +20,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'nickname' => $this->faker->name().$this->faker->numberBetween($min = 11, $max = 20),
+            'firstname' => $this->faker->firstName(),
+            'lastname' => $this->faker->lastName(),
+            'credibility' => $this->faker->numberBetween($min = 30, $max = 60),
+            'phonenumber' => $this->faker->numerify('###-###-####'),
+            'recommendation' => $this->faker->boolean,
+            'warning' => $this->faker->boolean,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

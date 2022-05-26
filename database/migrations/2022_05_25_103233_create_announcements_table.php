@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');   
             $table->integer('radius');
             $table->integer('amountPeople');
+            $table->string('place');
             $table->date('date');
             $table->string('type');                      
             $table->unsignedBigInteger('user_id');

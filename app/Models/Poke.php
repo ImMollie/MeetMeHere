@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Poke extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.

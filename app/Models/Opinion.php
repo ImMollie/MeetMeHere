@@ -12,14 +12,7 @@ class Opinion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'culture',
-        'punctuality',
-        'attractiveness',
-        'truthfulness',
-        'hygiene',
-        'humor',
-        'boldness',
-        'warmth',        
+        'opinionTypes',           
     ];
 
     public function pokeOpinion()

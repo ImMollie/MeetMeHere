@@ -15,7 +15,7 @@ class Announcement extends Model
         'category',
         'description',
         'radius',
-        'travel',
+        'place',
         'amountPeople',
         'date',
         'type',          

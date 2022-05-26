@@ -17,11 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
             ->references('id')
-            ->on('category');
+            ->on('categories');
             $table->unsignedBigInteger('announcement_id');
             $table->foreign('announcement_id')
             ->references('id')
-            ->on('announcement');
+            ->on('announcements');
             $table->timestamps();
             //asd
         });
