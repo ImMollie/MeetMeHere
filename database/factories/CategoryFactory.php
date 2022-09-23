@@ -19,7 +19,6 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //'category_id' => Category::select('id')->orderByRaw("RAND()")->first()->id,  
             'categoryName' => Category::select('categoryName')->orderByRaw("RAND()")->first()->categoryName,
         ];
     }

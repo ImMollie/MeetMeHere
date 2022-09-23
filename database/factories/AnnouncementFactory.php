@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Announcement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AnnouncementFactory extends Factory
 {
-    protected $model = Announcement::class;
+    protected $model = Announcement::class;    
     /**
      * Define the model's default state.
      *
@@ -23,7 +24,7 @@ class AnnouncementFactory extends Factory
             //'announcement_id' => Announcement::select('id')->orderByRaw("RAND()")->first()->id,  
             'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,  
             'status' => $this->faker->text(10),
-            'category' => $this->faker->text(10),
+            'category' => Category::all()->random()->categoryName,
             'description' => $this->faker->text(10),
             'radius' => $this->faker->numberBetween($min = 1, $max = 10),
             'place' => $this->faker->text(10),

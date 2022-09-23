@@ -22,7 +22,7 @@ class PokeFactory extends Factory
         return [
             //'poke_id' => Poke::select('id')->orderByRaw("RAND()")->first()->id,  
             'content' => $this->faker->text(10),
-            'status' => $this->faker->text(10),
+            'status' => Poke::select('status')->orderByRaw("RAND()")->first()->status,
             'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'userpoke_id' => User::select('id')->orderByRaw("RAND()")->first()->id,  
             'userpoked_id' => User::select('id')->orderByRaw("RAND()")->first()->id,
