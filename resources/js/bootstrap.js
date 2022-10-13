@@ -2,7 +2,6 @@ window.$ = require('jquery');
 window._ = require('lodash');
 
 
-
 require('bootstrap');
 require('bootstrap-icons/font/bootstrap-icons.css');
 

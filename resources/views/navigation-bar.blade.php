@@ -1,5 +1,5 @@
 <header id="header" class="top-head row align-items-center">
-   <div class="col-5 col-md-1-5">   <h1>Meet me<br><div style="letter-spacing:3px; font-size:60px; font-weight:600;">Here!</div></h1></div>
+   <div class="col-5 col-md-2">   <h1>Meet me<br><div style="letter-spacing:3px; font-size:60px; font-weight:600;">Here!</div></h1></div>
    <div class="col">    <a href="{{ route('home') }}"><h3>We supporting the organization<br>of group activities</h3></a> </div>
    <div class="col-2">   
       
@@ -20,32 +20,85 @@
       </div>  
    </div> 
 
-<nav class="navbar">
-    <div class="container-fluid">
-             <div class="right-nav">                        
-                <div class="login-sr">
-                                                                                                
-             </div>
-       </div>
-    </div>
-<div class="container2" style="background-color: #05192e">
-    <div class="d-flex justify-content-end">
-       <div class="nav-box">
-          <ul>
-             <li><a class="text-primary font-weight-bold" href="howitworks.html">How it works</a></li>                                 
-          </ul>
-       </div>
-       <div class="nav-box">
-          <ul>
-             <li><a class="text-primary font-weight-bold" href="about-us.html">Chamb for Business</a></li>                                    
-                </ul>
-       </div>
-       <div class="nav-box">
-          <ul>
-             <li><a class="text-primary font-weight-bold" href="howitworks.html">How it works</a></li>                                 
-          </ul>
-       </div>
-    </div>
- </div>
-</nav>
+   <nav class="navigation">
+      <ul class="menu">
+        <li class="menu__item">
+          <a href="#" class="menu__link">
+            <span class="menu__title">
+              <span class="menu__first-word" data-hover="About">
+                About
+              </span>
+              <span class="menu__second-word" data-hover="Us">
+                Us
+              </span>
+            </span>
+          </a>
+        </li>
+    
+        <li class="menu__item">
+          <a href="#" class="menu__link">
+            <span class="menu__title">
+              <span class="menu__first-word" data-hover="Our">
+                Our
+              </span>
+              <span class="menu__second-word" data-hover="History">
+                History
+              </span>
+            </span>
+          </a>
+        </li>
+    
+        <li class="menu__item">
+          <a href="#" class="menu__link">
+            <span class="menu__title">
+              <span class="menu__first-word" data-hover="Latest">
+                Latest
+              </span>
+              <span class="menu__second-word" data-hover="News">
+                News
+              </span>
+            </span>
+          </a>
+        </li>
+    
+        <li class="menu__item">
+          <a href="#" class="menu__link">
+            <span class="menu__title">
+              <span class="menu__first-word" data-hover="New">
+                New
+              </span>
+              <span class="menu__second-word" data-hover="Arrivals">
+                Arrivals
+              </span>
+            </span>
+          </a>
+        </li>
+    
+        <li class="menu__item">
+          <a href="#" class="menu__link">
+            <span class="menu__title">
+              <span class="menu__first-word" data-hover="On">
+                On
+              </span>
+              <span class="menu__second-word" data-hover="Sale">
+                Sale
+              </span>
+            </span>
+          </a>
+        </li>
+    
+        <li class="menu__item">
+          <a href="#" class="menu__link">
+            <span class="menu__title">
+              <span class="menu__first-word" data-hover="Contact">
+                Contact
+              </span>
+              <span class="menu__second-word" data-hover="Us">
+                Us
+              </span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 </header>

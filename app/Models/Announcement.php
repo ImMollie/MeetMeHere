@@ -18,6 +18,7 @@ class Announcement extends Model
         'place',
         'amountPeople',
         'date',
+        'date2',
         'type',          
     ];
 

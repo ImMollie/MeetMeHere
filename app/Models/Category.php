@@ -12,7 +12,8 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'categoryName'
+        'categoryName',
+        'categoryIMG'
     ];
 
     public function announcementInCategory()

@@ -60,12 +60,20 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {        
-        // $request->validate([
-        //     'nickname' || 'email' => 'required',
-        //     'email' => 'required',            
-        //     'password' => 'required',
-        // ]);
+    {     
+        if($this->nickname=='nickname'){   
+        $request->validate([        
+            'nickname' => 'required', 'string', 'max:20',  
+            'password' => 'required', 'string',
+         ]);
+        }
+         else{
+         $request->validate([        
+            'email' => 'required', 'string', 'email', 'max:50',  
+            'password' => 'required', 'string',
+         ]);
+        }
+         
         
         $credentials = $request->only($this->nickname, 'password');
         
@@ -73,8 +81,8 @@ class LoginController extends Controller
 
             return redirect()->route('home');
         }
-
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        // dd($validator->fails());
+        return redirect("login")->with('message','Oppes! You have entered invalid credentials');
     }
  
     /**

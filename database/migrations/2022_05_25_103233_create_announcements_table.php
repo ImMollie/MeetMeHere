@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('amountPeople');
             $table->string('place');
             $table->date('date');
+            $table->date('date2');
             $table->string('type');                      
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

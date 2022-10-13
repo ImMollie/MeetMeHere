@@ -17,7 +17,12 @@
                     <div class="d-flex flex-row align-items-center mt-5">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
-                          <input type="text" id="form3Example1c" class="form-control{{ $errors->has('nickname') || $errors->has('email') ? 'is-invalid' : '' }}"
+                          @if(session()->has('message'))
+                          <div class="alert alert-danger">
+                              {{ session()->get('message') }}
+                          </div>
+                      @endif
+                          <input type="text"  class="form-control {{ $errors->has('nickname') || $errors->has('email') ? 'is-invalid' : '' }}"
                                         name="nickname" value="{{ old('nickname') ?: old('email') }}" required />
                           <label class="form-label">{{__('translation.register.nickname')}} {{__('translation.register.or')}} {{__('translation.register.email')}}</label>
 				            @if ($errors->has('nickname') || $errors->has('email'))
@@ -33,7 +38,7 @@
                     <div class="d-flex flex-row align-items-center mt-2">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
-                          <input type="password" id="form3Example1c" class="form-control @error('password') is-invalid @enderror"
+                          <input type="password"  class="form-control @error('password') is-invalid @enderror"
                                         name="password" value="{{ old('password') }}" />
                           <label class="form-label">{{__('translation.register.password')}}</label>
 				            @error('password')
