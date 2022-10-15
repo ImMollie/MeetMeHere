@@ -77,12 +77,18 @@ class AddAnnouncementController extends Controller
     public function PostcreateStep4(Request $request)
     {        
         $validatedData = $request->validate([
-            'date' => ['required','date'],  
-            'date2' => ['date','after_or_equal:date']
+            'description' => 'required',             
         ]);         
         $request->session()->push('announcement', $validatedData); 
         return redirect('/addAnnouncement-create-step-5');        
     }
+
+    public function createStep5(Request $request)
+    {        
+        $announcement = $request->session()->get('announcement');        
+        return view('addAnStep5',compact('announcement'));
+    }
+
 
     public function store(Request $request)
     {

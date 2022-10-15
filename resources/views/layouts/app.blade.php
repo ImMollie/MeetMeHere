@@ -110,7 +110,7 @@
 <body>
     <div id="app">   
         @include('navigation-bar')      
-        <div style="background-color: #09284b height:100%">
+        <div style="background-color: #09284b; height:100%">
             @yield('content')
         </div>
     </div>

@@ -2,12 +2,30 @@
 
 @section('content')
 <section style="background-color: #09284b;">
-<div class="container h-100">
+<div class="container h-100 pt-5">
     <div class="formCard p-md-4" style="border-radius: 25px;">
+        @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
         <form action="{{ route('announcement.post.step.3') }}" method="POST">
             @csrf
-            <div class="row justify-content-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Choose optionally localization of your meeting and time</div>
-            <a href="{{ route('announcement.create.step.2') }}" class="btn btn-md btn-success float-right"></a>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-1 pt-2">
+                        <a href="{{ route('announcement.create.step.2') }}" class="btn btn-md btn-success float-right"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col-md-10">
+                        <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Step 3</p>                        
+                    </div>                    
+                </div> 
+            </div>
+            <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-3 mb-5">Choose localization</p>
                 <div class="row">
                     <div class="col" style="border-right: 5px dotted #bbb; border-radius:5px;">                
                         
@@ -45,7 +63,7 @@
     </div>
 		
         <div class="row justify-content-end">						
-            <button type="submit" class="quiz_continueBtn mt-5" style="max-width: 100%"><i class="fa fa-save"></i>Next</button>
+            <button type="submit" class="quiz_continueBtn mt-5" style="max-width: 100%">Next</button>
         </div> 
     </form> 
 	</div>

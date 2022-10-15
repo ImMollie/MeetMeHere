@@ -1,11 +1,17 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
 @import 'variables';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 // Bootstrap icons
 @import '~bootstrap-icons/font/bootstrap-icons';
+
+// Font-Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 
 
 // Colors
@@ -33,7 +39,7 @@ body {
   display: flex;
   align-items: center;
   height: 100vh;
-  background: #fefefe;
+  background: #09284b;
 }
 
 a {
@@ -131,4 +137,12 @@ a {
     color: $color-primary;
   }
 }
+}
+
+.formCard{
+  border-radius: 25px;
+  background-color: #f2dec6;
+  color:black;
+  background-clip:border-box;
+  border: 1px solid white;
 }
