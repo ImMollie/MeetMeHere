@@ -6,143 +6,227 @@
 @import '~bootstrap/scss/bootstrap';
 // Bootstrap icons
 @import '~bootstrap-icons/font/bootstrap-icons';
-
 // Font-Awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
-
-
 // Colors
 $color-primary: #553c9a;
 $color-secondary: #626262;
 $color-border: #b393d3;
-
 // Media Queries breakpoints
 $small: 480px;
 $medium: 768px;
 $large: 992px;
 $x-large: 1200px;
-
 @mixin hide-menu-items($index) {
-  &:nth-child(n + #{$index + 1}) {
-    display: none;
-  }
-
-  &:nth-child(#{$index}) .menu__link {
-    border-right: 0;
-  }
+    &:nth-child(n+#{$index + 1}) {
+        display: none;
+    }
+    &:nth-child(#{$index}) .menu__link {
+        border-right: 0;
+    }
 }
 
 body {
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  background: #09284b;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background: #09284b;
 }
 
 a {
-  outline: 0;
-  text-decoration: none;
+    outline: 0;
+    text-decoration: none;
 }
 
 .navigation {
-  width: 100%;
-  border-bottom: 1px solid $color-border;
-  font-family: 'Pathway Gothic One', sans-serif;
-  font-size: 22px;  
-
-.menu {
-  display: flex;
-  justify-content: center;
-  max-width: 1150px;
-  margin: 0 auto;
-  padding-left: 0;
-}
-
-.menu__item {
-  display: inline-block;
-  white-space: nowrap;
-
-  @media screen and (max-width: $small) {
-    @include hide-menu-items(2);
-  }
-
-  @media screen and (max-width: $medium) {
-    @include hide-menu-items(3);
-  }
-
-  @media screen and (max-width: $large) {
-    @include hide-menu-items(4);
-  }
-
-  &:last-child .menu__link {
-    border-right: 0;
-  }
-}
-
-.menu__link {
-  display: block;
-  padding: 6px 30px 3px;
-  border-right: 2px dotted $color-border;
-
-  &:hover,
-  &:focus {
-    .menu__first-word {
-      transform: translate3d(0, -105%, 0);
+    width: 100%;
+    border-bottom: 1px solid $color-border;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 22px;
+    .menu {
+        display: flex;
+        justify-content: center;
+        max-width: 1150px;
+        margin: 0 auto;
+        padding-left: 0;
     }
-
+    .menu__item {
+        display: inline-block;
+        white-space: nowrap;
+        @media screen and (max-width: $small) {
+            @include hide-menu-items(2);
+        }
+        @media screen and (max-width: $medium) {
+            @include hide-menu-items(3);
+        }
+        @media screen and (max-width: $large) {
+            @include hide-menu-items(4);
+        }
+        &:last-child .menu__link {
+            border-right: 0;
+        }
+    }
+    .menu__link {
+        display: block;
+        padding: 6px 30px 3px;
+        border-right: 2px dotted $color-border;
+        &:hover,
+        &:focus {
+            .menu__first-word {
+                transform: translate3d(0, -105%, 0);
+            }
+            .menu__second-word {
+                transform: translate3d(0, 105%, 0);
+            }
+        }
+        @media screen and (min-width: $medium) {
+            padding: 6px 40px 3px;
+        }
+    }
+    .menu__title {
+        display: inline-block;
+        overflow: hidden;
+    }
+    .menu__first-word,
     .menu__second-word {
-      transform: translate3d(0, 105%, 0);
+        display: inline-block;
+        position: relative;
+        transition: transform .3s;
+        &::before {
+            position: absolute;
+            content: attr(data-hover);
+        }
     }
-  }
-
-  @media screen and (min-width: $medium) {
-    padding: 6px 40px 3px;
-  }
+    .menu__first-word {
+        color: #553c9a;
+        &::before {
+            top: 105%;
+            color: $color-secondary;
+        }
+    }
+    .menu__second-word {
+        color: $color-secondary;
+        &::before {
+            bottom: 105%;
+            color: $color-primary;
+        }
+    }
 }
 
-.menu__title {
-  display: inline-block;
-  overflow: hidden;
+.formCard {
+    border-radius: 25px;
+    background-color: #f2dec6;
+    color: black;
+    background-clip: border-box;
+    border: 1px solid white;
+    position: relative;
 }
 
-.menu__first-word,
-.menu__second-word {
-  display: inline-block;
-  position: relative;
-  transition: transform .3s;
+.card1 h6 {
+    margin-bottom: 3.2rem !important;
+}
 
-  &::before {
+.card1 {
+    margin-top: 10px;
+    margin-left: 80px;
+    z-index: 0;
+    border-right: 1px solid grey;
+}
+
+#progress-bar {
     position: absolute;
-    content: attr(data-hover);
-  }
+    left: 100px;
+    overflow: hidden;
+    color: black;
 }
 
-.menu__first-word {
-  color: #553c9a;
-
-  &::before {
-    top: 105%;
-    color: $color-secondary;
-  }
+#progress-bar li {
+    list-style-type: none;
+    font-size: 8px;
+    font-weight: 400;
+    margin-bottom: 36px;
 }
 
-.menu__second-word {
-  color: $color-secondary;
-
-  &::before {
-    bottom: 105%;
-    color: $color-primary;
-  }
-}
+#progress-bar li:nth-child(4) {
+    margin-bottom: 100px;
 }
 
-.formCard{
-  border-radius: 25px;
-  background-color: #f2dec6;
-  color:black;
-  background-clip:border-box;
-  border: 1px solid white;
+#progress-bar .step0:before {
+    content: "";
+    color: #fff
+}
+
+#progress-bar li:before {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    font-size: 20px;
+    background: #fff;
+    border: 2px solid #E53935;
+    border-radius: 50%;
+    margin: auto
+}
+
+#progress-bar li:last-child:before {
+    width: 40px;
+    height: 40px
+}
+
+#progress-bar li:after {
+    content: '';
+    width: 3px;
+    height: 66px;
+    background: #BDBDBD;
+    position: absolute;
+    left: 50px;
+    top: 15px;
+    z-index: 1;
+}
+
+#progress-bar li:last-child:after {
+    top: 147px;
+    height: 132px
+}
+
+#progress-bar li:nth-child(3):after {
+    top: 81px
+}
+
+#progress-bar li:nth-child(2):after {
+    top: 0px
+}
+
+#progress-bar li:first-child:after {
+    position: absolute;
+    top: -81px
+}
+
+#progress-bar li.active:after {
+    background: #E53935;
+}
+
+#progress-bar li.active:before {
+    background: #E53935;
+    font-family: inherit;
+    content: "\f00c";
+}
+
+.card2 {
+    display: none; //ukrycie
+}
+
+.card2.show {
+    display: block; //pojawienie
+}
+
+.prevstep {
+    display: block; //pojawienie
+    position: absolute;
+    left: 50px;
+    top: 30px;
+    cursor: pointer;
 }

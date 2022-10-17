@@ -15,8 +15,9 @@ class AddAnnouncementController extends Controller
         $request->session()->forget('announcement');
 
         $elements = Announcement::all();
+        $categories = Category::all();        
 
-        return view('addAn',compact('elements'));
+        return view('addAn',compact('elements','categories'));
     }
 
     public function createStep1(Request $request)

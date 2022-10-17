@@ -16,7 +16,43 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoDY1RWjbut0htw-VZxTU6bi4Ns6WZWkk"></script>
     <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>   
 
-    <script>     
+    <script>
+        
+           
+        
+
+
+
+    var step, nextstep, prevstep;
+    setTimeout(function () {
+
+        $(document).ready(function(){
+            if($(".show").hasClass("step1")){
+        $(".prevstep").css({'display':'none'});
+    }
+        $(".nextstep").click(function(){
+            step = $(this).parent().parent();
+            nextstep = $(this).parent().parent().next();
+            $(".prevstep").css({'display':'block'});
+            $(step).removeClass("show");
+            $(nextstep).addClass("show");
+        });
+        $(".prevstep").click(function(){
+            step = $(".show");
+            prevstep = $(".show").prev();
+            $(step).removeClass("show");
+            $(prevstep).addClass("show");
+            $(".prevstep").css({'display':'block'});
+            if($(".show").hasClass("step1")){
+        $(".prevstep").css({'display':'none'});
+    }
+        })
+        });
+    }, 500);
+    
+
+
+
     var map,marker,geocode;
         function dateDisabled()
         {
@@ -93,7 +129,8 @@
         }
         );
     }
-    
+
+
         </script>
 
 
