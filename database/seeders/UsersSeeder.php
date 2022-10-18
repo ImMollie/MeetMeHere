@@ -30,6 +30,12 @@ class UsersSeeder extends Seeder
             'password' => Hash::make('12345678'),            
             'email' => 'admin.testowy@localhost',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'city' => 'Skalmierzyce',
+            'street' => 'Kaliska',
+            'number' => 20,
+            'facebook' => 'url/asdasda',
+            'twitter' => 'url/asdasda',
+            'instagram' => 'url/asdasda',
         ]);        
     }
 }

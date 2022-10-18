@@ -39,7 +39,7 @@
                      </a>
                   </div>
                   <div class="col">
-                     <a href="addAn">
+                     <a href="{{ route('indexAnnouncement') }}">
                         <div class="box-img">
                            <h4>Add</h4>  
                            <img src="https://img.freepik.com/free-vector/add-notes-concept-illustration_114360-2496.jpg?w=826&t=st=1665585003~exp=1665585603~hmac=9b3927c895d192afc8e7d5b334b0850ce1841e60c801e280c0fbab8e74785add" />                         

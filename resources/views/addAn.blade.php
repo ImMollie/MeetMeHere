@@ -26,6 +26,8 @@
 
                 <div class="col-lg-9 col-xl-13">
                     <div class="formCard text-black" style="border-radius: 25px;">
+                        <form method="POST" action="{{ route('store') }}">
+                        @csrf
                         <!-- Poczatek -->
                         <div class="card2 step1 show">
                             <div class="card-header">
@@ -256,18 +258,66 @@
                         </div>
                         <!-- Koniec ekranu trzeciego -->
 
-                        <!-- Początek ekranu czwartego -->
+                        <!-- Początek ekranu czwartego -->                        
                         <div class="card2">
-                            Krok4
-                            <div class="quiz_next">
-                                <button class="quiz_continueBtn nextstep" type="button">Continue</button>
+                            <div class="card-header">
+                                <div class="row">
+                                    <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                    <div class="col">
+                                        <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Step 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-md-4">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                        <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Describe your meeting!</p>
+                                        <p class="text-center h4 mb-3 mx-1 mx-md-2 mt-1">Again remember about this: and
+                                            this: XD</p>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <div class="p-3">
+                                        <textarea id="address" class="form-control" name="description" placeholder="Describe it..." rows="13"
+                                            cols="45"></textarea>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                            <div class="row justify-content-center mb-3">
+                                <button type="submit" class="quiz_continueBtn mt-5">Finish</button>
                             </div>
                         </div>
                         <!-- Koniec ekranu czwartego -->
+                        </form>
                     </div>
                     <!--FormCard styling formy koniec  -->
                 </div> <!-- Kolumna prawa koniec -->
             </div>
+                <div class="modal fade" id="location-modal" tab-index="-1" role="dialog" aria-labelled="location-modal"
+                aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-info text-white">
+                                <h5 class="modal-title" id="address-label">Choose Location</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div id="map"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-bs-dismiss="modal"><i
+                                        class="fa fa-check"></i>Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </section>
 @endsection

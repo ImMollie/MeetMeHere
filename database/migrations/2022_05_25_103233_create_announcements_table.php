@@ -17,13 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->string('category');
-            $table->string('description');   
-            $table->integer('radius');
+            $table->string('description');
             $table->integer('amountPeople');
-            $table->string('place');
+            $table->string('place')->nullable();
             $table->date('date');
-            $table->date('date2');
-            $table->string('type');                      
+            $table->date('date2')->nullable();                                 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
             ->references('id')

@@ -27,6 +27,12 @@ class User extends Authenticatable
         'recommendation',
         'warning',        
         'password',
+        'city',
+        'street',
+        'number',
+        'facebook',
+        'twitter',
+        'instagram',
     ];
 
     /**

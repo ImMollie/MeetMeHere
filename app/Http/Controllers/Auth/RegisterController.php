@@ -50,6 +50,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
+    
     {
         return Validator::make($data, [
             'nickname' => ['required', 'unique:users', 'string', 'max:20'],
@@ -58,6 +59,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'phonenumber' => ['required', 'numeric'],
             'password' => ['required', 'string', Password::min(8)->letters()->mixedCase()->numbers(), 'confirmed'],
+            'city' => ['required','alpha'],
+            'street' => ['required','string'],
+            'number' => ['required','numeric'],
         ]);
     }
 
@@ -75,7 +79,10 @@ class RegisterController extends Controller
             'lastname' => Str::ucfirst($data['lastname']),
             'email' => $data['email'],
             'phonenumber' => $data['phonenumber'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password']),               
+            'city' => $data['city'],
+            'street' => $data['street'],
+            'number' => $data['number'],         
         ]);
     }
 }

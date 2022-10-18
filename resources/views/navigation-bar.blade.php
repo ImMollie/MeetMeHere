@@ -9,8 +9,9 @@
             <li>
                <form action="{{ route('logout')}}" method="POST">
                @csrf
-               <a class="custom-b" href="" onclick='this.parentNode.submit(); return false;'>Logout</a>
+               <a class="custom-b" href="" onclick='this.parentNode.submit(); return false;'>Logout</a>               
                </form>
+               <a class="custom-b" href="{{ route('indexProfile') }}">Profile</a>
             </li>
         @else
             <li><a class="custom-b" href="{{ route('login') }}">Login</a></li>

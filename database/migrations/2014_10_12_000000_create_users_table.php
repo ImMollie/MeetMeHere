@@ -25,6 +25,12 @@ return new class extends Migration
             $table->boolean('warning')->default(false);                   
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('city');
+            $table->string('street');
+            $table->smallInteger('number');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

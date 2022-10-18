@@ -19,7 +19,8 @@ class Announcement extends Model
         'amountPeople',
         'date',
         'date2',
-        'type',          
+        'type',    
+        'user_id',      
     ];
 
     public function categoryOfAnnouncement()

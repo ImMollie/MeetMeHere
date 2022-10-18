@@ -7,104 +7,63 @@ use Illuminate\Support\Arr;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AddAnnouncementController extends Controller
 {
-    public function index(Request $request)
+    public function indexAnnouncement(Request $request)
     {
-        $request->session()->forget('announcement');
-
         $elements = Announcement::all();
-        $categories = Category::all();        
-
-        return view('addAn',compact('elements','categories'));
-    }
-
-    public function createStep1(Request $request)
-    {
         $categories = Category::all();
-        $announcement = $request->session()->get('announcement');        
-        return view('addAnStep1',compact('announcement','categories'));
-    }
-
-    public function PostcreateStep1(Request $request)
-    {
-        $validatedData = $request->validate([
-            'categoryCheck' => ['required', 'array']       
-        ]);
-        $request->session()->put('announcement', $validatedData);        
-        return redirect('/addAnnouncement-create-step-2');
-
-    }
-
-    public function createStep2(Request $request)
-    {        
-        $announcement = $request->session()->get('announcement');        
-        return view('addAnStep2',compact('announcement'));
-    }
-
-    public function PostcreateStep2(Request $request)
-    {        
-        $validatedData = $request->validate([
-            'amountPeople' => 'required',      
-        ]);         
-        $request->session()->push('announcement', $validatedData); 
-        return redirect('/addAnnouncement-create-step-3');        
-    }
-
-    public function createStep3(Request $request)
-    {        
-        $announcement = $request->session()->get('announcement');        
-        return view('addAnStep3',compact('announcement'));
-    }
-
-    public function PostcreateStep3(Request $request)
-    {       
-        
-        $validatedData = $request->validate([
-            'date' => ['required','date'],  
-            'date2' => ['date','after:date']
-        ]);         
-        $request->session()->push('announcement', $validatedData); 
-        return redirect('/addAnnouncement-create-step-4');        
-    }
-
-    public function createStep4(Request $request)
-    {        
-        $announcement = $request->session()->get('announcement');        
-        return view('addAnStep4',compact('announcement'));
-    }
-
-    public function PostcreateStep4(Request $request)
-    {        
-        $validatedData = $request->validate([
-            'description' => 'required',             
-        ]);         
-        $request->session()->push('announcement', $validatedData); 
-        return redirect('/addAnnouncement-create-step-5');        
-    }
-
-    public function createStep5(Request $request)
-    {        
-        $announcement = $request->session()->get('announcement');        
-        return view('addAnStep5',compact('announcement'));
+        return view('addAn',compact('elements','categories'));
     }
 
 
     public function store(Request $request)
     {
-        $announcement = $request->session()->get('announcement');
+        $validatedData = $request->validate([
+            'categoryCheck' => ['required', 'array'],
+            'amountPeople' => 'required',    
+            'date' => ['required','date'],  
+            'date2' => ['date','after:date']
+        ]);  
+        
+        $categoryName="";
+        $counter = 0;
+        $categories = Category::findMany($request->input('categoryCheck'));
+        foreach($categories as $category){
+             $categoryName .= $category->categoryName;
+             $counter++;
+             if(count($categories)>$counter){
+                $categoryName .= ",";
+             }
+        };
 
-        $announcement->save();
-
+        
+        $userID = Auth::user();        
+         Announcement::create([
+            'status' => 'Active',
+            'category' => $categoryName,           
+            'description' => $request->description,            
+            'place' => $request->address,
+            'amountPeople' => $request->amountPeople,
+            'date' => $request->date,
+            'date2' => $request->date2,
+            'user_id' => $userID->id,
+        ]);
         return redirect('/data');
     }
 }
-        // 'status',
-        // 'category',
-        // 'description',
-        // 'radius',
-        // 'place',
-        // 'amountPeople',
-        // 'date',
-        // 'type',      
+// $table->id();
+// $table->string('status');
+// $table->string('category');
+// $table->string('description');
+// $table->integer('amountPeople');
+// $table->string('place');
+// $table->date('date');
+// $table->date('date2');                                 
+// $table->unsignedBigInteger('user_id');
+// $table->foreign('user_id')
+// ->references('id')
+// ->on('users');            
+// $table->timestamps();

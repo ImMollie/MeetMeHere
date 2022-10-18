@@ -23,10 +23,16 @@
 
 
 
-    var step, nextstep, prevstep;
+    var step, nextstep, prevstep, showProfile;
     setTimeout(function () {
 
-        $(document).ready(function(){
+        $(document).ready(function(){ 
+            $(".editProfile").click(function(){                
+                $($(this).parent().parent().parent()).removeClass("show");
+                $($(this).parent().parent().parent().next()).addClass("show");
+                $(".showSocial").css({'display':'none'});
+                $(".editSocial").css({'display':'block'});
+            });    
             if($(".show").hasClass("step1")){
         $(".prevstep").css({'display':'none'});
     }

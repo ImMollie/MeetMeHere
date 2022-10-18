@@ -30,8 +30,7 @@ class AnnouncementFactory extends Factory
             'place' => $this->faker->text(10),
             'amountPeople' => $this->faker->numberBetween($min = 1, $max = 10),
             'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'date2' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'type' => $this->faker->numberBetween($min = 1, $max = 2),
+            'date2' => $this->faker->date($format = 'Y-m-d', $max = 'now'),           
         ];
     }
 }

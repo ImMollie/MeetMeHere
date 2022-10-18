@@ -33,13 +33,11 @@ class AnnouncementSeeder extends Seeder
                 'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,  
                 'status' => $statuses,
                 'category' => Category::all()->random()->categoryName,
-                'description' => $this->faker->text(10),
-                'radius' => $this->faker->numberBetween($min = 1, $max = 10),
+                'description' => $this->faker->text(10),                
                 'place' => $this->faker->text(10),
                 'amountPeople' => $this->faker->numberBetween($min = 1, $max = 10),
                 'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-                'date2' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-                'type' => $this->faker->numberBetween($min = 1, $max = 2),
+                'date2' => $this->faker->date($format = 'Y-m-d', $max = 'now'),                
             ]);
         
         //Announcement::factory()->count(5)->create();        

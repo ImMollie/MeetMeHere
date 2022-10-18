@@ -71,6 +71,49 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center mt-2">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" class="form-control @error('city') is-invalid @enderror"
+                                      name="city" value="{{ old('city') }}" />
+                        <label class="form-label">{{__('translation.register.city')}}</label>
+                  @error('city')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                  </div>
+                  
+
+                  <div class="d-flex flex-row align-items-center mt-2">
+                    <i class="fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" class="form-control @error('street') is-invalid @enderror"
+                                    name="street" value="{{ old('street') }}" />
+                      <label class="form-label">{{__('translation.register.street')}}</label>
+                @error('street')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mt-2">
+                  <i class="fa-lg me-3 fa-fw"></i>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" class="form-control @error('number') is-invalid @enderror"
+                                  name="number" value="{{ old('number') }}" />
+                    <label class="form-label">{{__('translation.register.number')}}</label>
+              @error('number')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+
+                    <div class="d-flex flex-row align-items-center mt-2">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                           <input type="text" class="form-control @error('phonenumber') is-invalid @enderror"
@@ -102,7 +145,7 @@
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                           <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        name="password" value="{{ old('password') }}" />
+                                        name="password_confirmation" value="{{ old('password') }}" />
                           <label class="form-label">{{__('translation.register.passwordrepeat')}}</label>
 				            @error('password')
                                 <span class="invalid-feedback" role="alert">

@@ -10,6 +10,9 @@ return [
         'passwordrepeat' => 'Repeat your password',                
         'phonenumber' => 'Phone number',
         'email' => 'Email',
+        'street' => 'Street',
+        'city' => 'City',
+        'number' => 'Number',
         'or' => 'or',
         'buttons' =>
         [
