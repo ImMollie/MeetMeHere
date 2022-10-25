@@ -9,6 +9,7 @@ html {
 
 #app {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -88,9 +89,17 @@ header .navbar {
     border-radius: 0px;
 }
 
+.background-img{
+    background-image: url('https://img.freepik.com/free-vector/city-skyline-summer-time-urban-view-background_107791-9101.jpg?w=1800&t=st=1666529060~exp=1666529660~hmac=667bd1aacf1990aaee1ff3dc3a459dd494930c27daa489ac3d24be921166d9cd');    
+     background-position: center;
+    background-repeat: no-repeat;
+    background-size:100% 100%;     
+}
+
 #header.top-head {
     background: #05192e;
-    padding: 10px;
+    padding: 10px;  
+    width: 100%;
 }
 
 #header h1 {
@@ -244,12 +253,10 @@ header .navbar-default .navbar-header {
 	4. PAGE CONTENT PRODUCT
 -------------------------------------------------------------*/
 
-.page-content-product {}
 
 .main-product {
     height: 100%;
-    background-color: #09284b;
-    background-image: url('../images/bg_main.png');
+    background-color: #09284b;    
     padding-bottom: 180px;
     background-position: center center;
 }
@@ -282,12 +289,13 @@ header .navbar-default .navbar-header {
 .box-img {
     background: #051d36;
     text-align: center;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px;
     min-height: 280px;
-    margin-bottom: 30px;
+    margin-bottom: 30px; */
     position: relative;
     border-bottom: solid #007dea 3px;
-    transition: ease all 0.5s;
+    transition: ease all 0.5s;    
+    border-radius: 25px;
 }
 
 .box-img h4 {

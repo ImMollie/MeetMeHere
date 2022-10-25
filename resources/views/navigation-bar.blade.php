@@ -1,7 +1,9 @@
-<header id="header" class="top-head row align-items-center">
+<header id="header" class="top-head">
+  <div class="background-img row align-items-center">
    <div class="col-5 col-md-2">   <h1>Meet me<br><div style="letter-spacing:3px; font-size:60px; font-weight:600;">Here!</div></h1></div>
    <div class="col">    <a href="{{ route('home') }}"><h3>We supporting the organization<br>of group activities</h3></a> </div>
    <div class="col-2">   
+
       
       <div class="login-signup">                              
          <ul>
@@ -102,4 +104,5 @@
         </li>
       </ul>
     </nav>
+  </div>
 </header>

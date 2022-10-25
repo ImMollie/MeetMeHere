@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Category;
 use App\Models\AnnouncementCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,7 @@ class Announcement extends Model
         'description',
         'radius',
         'place',
-        'amountPeople',
+        'amountPeople',        
         'date',
         'date2',
         'type',    
@@ -27,8 +28,14 @@ class Announcement extends Model
     {
         return $this->belongsTo(AnnouncementCategory::class,'id','announcement_id');        
     }
+
+    public function categoryOfAnnouncement2()
+    {
+        return $this->hasMany(AnnouncementCategory::class);        
+    }
+
     public function userAnnouncement()
     {
-        return $this->belongsTo(User::class,'id','user_id');        
+        return $this->belongsTo(User::class,'user_id','id');        
     }
 }
