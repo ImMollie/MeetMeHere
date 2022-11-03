@@ -30,5 +30,6 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/profileUpdate', [userProfileController::class,'profileUpdate'])->name('profileUpdate');
     Route::get('profile/{slug}', [userProfileController::class,'nicknameProfile'])->name('nicknameProfile');
     Route::get('search_announcement', [SearchAnnouncementController::class,'indexAnnouncement'])->name('searchAnnouncement');
+    // Route::get('filter', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
 });
 

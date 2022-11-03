@@ -11,8 +11,9 @@ class userProfileController extends Controller
 {
     public function indexProfile(Request $request)
     {
+        $switcher = true;
         $elements = Auth::user(); 
-        return view('userProfile',compact('elements'));
+        return view('userProfile',compact('elements','switcher'));
     }
 
     public function profileUpdate(ProfileRequest $request)
@@ -35,7 +36,8 @@ class userProfileController extends Controller
 
     public function nicknameProfile($slug)
     {
+        $switcher = false;
         $elements = User::where('slug',$slug)->first(); 
-        return view('userProfile',compact('elements'));
+        return view('userProfile',compact('elements','switcher'));
     }
 }

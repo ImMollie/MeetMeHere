@@ -12,11 +12,22 @@ use App\Models\AnnouncementCategory;
 class SearchAnnouncementController extends Controller
 {
     public function indexAnnouncement(Request $request)
-    {
-        $announcements = Announcement::all(); 
-        $ann2 = AnnouncementCategory::all();      
-        return view('searchAn',compact('announcements'));
+    {        
+        $categories = Category::all();
+        $announcements = Announcement::paginate(2); 
+        return view('searchAn',compact('announcements','categories'));
     }
+
+    // public function filterAnnouncement(Request $request)
+    // {
+    //     // $announcements = Announcement::all();
+    //     $asd = AnnouncementCategory::where('category_id',$request->get('category'))->get();
+    //     foreach($asd as $as){
+    //         dd($as->announcementCategory()->get());
+    //     }        
+    //     return $asd;
+        
+    // }
 
 
 }

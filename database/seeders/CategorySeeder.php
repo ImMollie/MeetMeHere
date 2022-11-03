@@ -21,13 +21,13 @@ class CategorySeeder extends Seeder
         $categories = [
             1 => 'Dog',
             2 => 'Beer',
-            3 => 'movie',
-            4 => 'date',
-            5 => 'travel',
-            6 => 'smallTrip',
-            7 => 'cycling',
-            8 => 'diving',
-            9 => 'climbing',
+            3 => 'Movie',
+            4 => 'Date',
+            5 => 'Travel',
+            6 => 'SmallTrip',
+            7 => 'Cycling',
+            8 => 'Diving',
+            9 => 'Climbing',
         ];
         $images = [
             1 => 'https://img.freepik.com/free-vector/cute-australian-shepherd_138676-2071.jpg?w=826&t=st=1665583505~exp=1665584105~hmac=20b1b81b89ab5b20587822c025aa7461ad5a3877c1b2ca4d6babaa373dc960aa', 
