@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\userProfileController;
 use App\Http\Controllers\addAnnouncementController;
 use App\Http\Controllers\SearchAnnouncementController;
@@ -30,6 +31,15 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/profileUpdate', [userProfileController::class,'profileUpdate'])->name('profileUpdate');
     Route::get('profile/{slug}', [userProfileController::class,'nicknameProfile'])->name('nicknameProfile');
     Route::get('search_announcement', [SearchAnnouncementController::class,'indexAnnouncement'])->name('searchAnnouncement');
+    Route::get('/chat/{id}', [ChatsController::class,'index'])->name('indexChat');
+
+    Route::get('messages', [ChatsController::class,'fetchMessages'])->name('fetchMessages');
+    Route::get('/currentUser', [ChatsController::class,'currentUser'])->name('currentUser');
+    Route::post('messages', [ChatsController::class,'sendMessage'])->name('sendMessage');
+
+    Route::get('/private-message/{user}', [ChatsController::class,'privateMessages'])->name('privateMessages');
+    Route::post('/private-message/{user}', [ChatsController::class,'sendPrivateMessage'])->name('sendPrivateMessage');
+
     // Route::get('filter', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
 });
 

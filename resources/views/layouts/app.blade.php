@@ -21,7 +21,22 @@
         setTimeout(function() {
 
             $(document).ready(function() {
-                
+                $(".category").click(function() {
+                     var category = $(this).val();
+                     $.ajax({
+                         type: 'GET',
+                         url: '',
+                         dataType: 'json',
+                         data: {
+                             '_token': '<?php echo csrf_token(); ?>',
+                             category: category
+                         },
+                         success: function(data) {
+                             var tableRow = '',
+                             $('#category').html('');                             
+                         }
+                    });
+                 })
 
 
 
@@ -154,6 +169,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/addAnnouncement.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/chat.css') }}" rel="stylesheet">
+
 </head>
 
 <body>

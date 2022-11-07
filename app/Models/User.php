@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Message;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -58,5 +59,10 @@ class User extends Authenticatable
     public function setNicknameAttribute($value){
         $this->attributes['nickname'] = $value;
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 }
