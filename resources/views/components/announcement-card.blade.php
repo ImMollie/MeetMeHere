@@ -53,7 +53,7 @@
                     <a class="btn btn-primary btn-sm"
                         href="{{ route('nicknameProfile', ['slug' => $announcement->userAnnouncement->slug]) }}">Creator
                         Details</a>
-                    <a class="btn btn-outline-primary btn-sm mt-2" href="{{ route('indexChat',['id' => $announcement->userAnnouncement->id])}}">Poke</a>
+                    <a class="btn btn-outline-primary btn-sm mt-2" href="{{ route('indexChat',['id' => $announcement->userAnnouncement])}}">Poke</a>
                 </div>
             </div>
         </div>

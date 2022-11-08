@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\userProfileController;
@@ -37,8 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/currentUser', [ChatsController::class,'currentUser'])->name('currentUser');
     Route::post('messages', [ChatsController::class,'sendMessage'])->name('sendMessage');
 
-    Route::get('/private-message/{user}', [ChatsController::class,'privateMessages'])->name('privateMessages');
-    Route::post('/private-message/{user}', [ChatsController::class,'sendPrivateMessage'])->name('sendPrivateMessage');
+    Route::get('private-message/{user}', [ChatsController::class,'privateMessages'])->name('privateMessages');
+    Route::post('private-message/{user}', [ChatsController::class,'sendPrivateMessage'])->name('sendPrivateMessage');
 
     // Route::get('filter', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
 });
