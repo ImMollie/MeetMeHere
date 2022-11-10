@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/style.css": "/css/style.css",
     "/css/app.css": "/css/app.css",
+    "/css/responsive.css": "/css/responsive.css",
     "/css/chat.css": "/css/chat.css",
     "/webfonts/fa-brands-400.ttf": "/webfonts/fa-brands-400.ttf",
     "/webfonts/fa-brands-400.woff2": "/webfonts/fa-brands-400.woff2",

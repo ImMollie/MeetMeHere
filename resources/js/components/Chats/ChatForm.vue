@@ -1,6 +1,6 @@
-<template>
-        <section style="background-color: #eee;">
-        <div class="container py-5">
+<template>    
+    <section style="background-color: #eee;">        
+        <div class="container py-5">            
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <div class="card" id="chat1" style="border-radius: 15px;">
@@ -26,7 +26,6 @@
                                             <p class="small mb-0">{{ message.message }}</p>
                                         </div>
                                 </div>
-
                             </div>  
                             <div class="form-outline">
                                 <div class="input-group">
@@ -40,13 +39,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-        </div>
+        </div>        
     </section>
-
 </template>
 
 <script>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<x-header/>
     <section style="background-color: #09284b;">
         <div class="container pt-5 card text-black h-100" style="border-radius: 25px;">
             <div class="row">

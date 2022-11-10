@@ -19,28 +19,7 @@
     <script>
         var step, nextstep, prevstep, showProfile;
         setTimeout(function() {
-
             $(document).ready(function() {
-                // $(".category").click(function() {
-                //      var category = $(this).val();
-                //      $.ajax({
-                //          type: 'GET',
-                //          url: '',
-                //          dataType: 'json',
-                //          data: {
-                //              '_token': '<?php echo csrf_token(); ?>',
-                //              category: category
-                //          },
-                //          success: function(data) {
-                //              var tableRow = '',
-                //              $('#category').html('');                             
-                //          }
-                //     });
-                //  })
-
-
-
-
                 var myCarousel = document.querySelector('#carouselExampleSlidesOnly')
                 var carousel = new bootstrap.Carousel(myCarousel)
                 $(".editProfile").click(function() {
@@ -82,7 +61,7 @@
                     }
                 })
             });
-        }, 500);
+        }, 1000);
 
 
 
@@ -160,25 +139,33 @@
         }
     </script>
 
+    <!-- SCRIPTS =============================-->
+   
+
+   
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- Styles -->    
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/addAnnouncement.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/chat.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/chat.css') }}" rel="stylesheet">   
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">  
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
+    
+    
 </head>
 
 <body>
-    <div id="app">
-        @include('navigation-bar')
-        <div style="background-color: #09284b; height:100%">
+    <div id="app">            
+        <div>
             @yield('content')
         </div>
+        
     </div>
 </body>
 
