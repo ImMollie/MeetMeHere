@@ -14,7 +14,7 @@ class AddAnnouncementController extends Controller
     public function indexAnnouncement(Request $request)
     {
         $elements = Announcement::all();
-        $categories = Category::all();
+        $categories = Category::all();        
         return view('addAn',compact('elements','categories'));
     }
 

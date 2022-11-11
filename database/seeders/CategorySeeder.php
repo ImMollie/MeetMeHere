@@ -23,12 +23,25 @@ class CategorySeeder extends Seeder
             2 => 'Beer',
             3 => 'Movie',
             4 => 'Date',
-            5 => 'Travel',
-            6 => 'SmallTrip',
+            5 => 'Vacation',
+            6 => 'Trip',
             7 => 'Cycling',
             8 => 'Diving',
             9 => 'Climbing',
         ];
+
+        $types = [
+            1 => 'Animals',
+            2 => 'Social',
+            3 => 'Social',
+            4 => 'Social',
+            5 => 'Travel',
+            6 => 'Travel',
+            7 => 'Sport',
+            8 => 'Sport',
+            9 => 'Sport',
+        ];
+
         $images = [
             1 => 'https://img.freepik.com/free-vector/cute-australian-shepherd_138676-2071.jpg?w=826&t=st=1665583505~exp=1665584105~hmac=20b1b81b89ab5b20587822c025aa7461ad5a3877c1b2ca4d6babaa373dc960aa', 
             2 => 'https://img.freepik.com/free-vector/realistic-isolated-glass-beer-with-drops_1284-41687.jpg?w=826&t=st=1665583606~exp=1665584206~hmac=7423168ee147e2b935ffd432dd6d379fd17e91bc4ffd8409ae1ffee032a8e9f1', 
@@ -44,6 +57,7 @@ class CategorySeeder extends Seeder
         foreach($categories as $category => $categories) {            
             DB::table('categories')->insert([
                 'categoryName' => $categories, 
+                'categoryType' => $types[$category],
                 'categoryIMG' => $images[$category],               
                 'created_at' => $generator->dateTime(),
                 'updated_at' => $generator->dateTime(),

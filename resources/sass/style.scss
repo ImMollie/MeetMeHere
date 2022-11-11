@@ -3,6 +3,15 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #0c0c0c;  
   overflow-x: hidden;
+  background: rgb(34,193,195);
+  background: linear-gradient(180deg, rgba(34,193,195,1) 70%, rgb(255, 205, 98) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-img{
+	background-image: url('/images/index/about-img1.jpg');
+	background-size: 100% 100%;
 }
 
 .layout_padding {

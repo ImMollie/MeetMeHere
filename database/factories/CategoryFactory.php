@@ -20,6 +20,7 @@ class CategoryFactory extends Factory
     {
         return [
             'categoryName' => Category::select('categoryName')->orderByRaw("RAND()")->first()->categoryName,
+            'categoryType' => Category::select('categoryType')->orderByRaw("RAND()")->first()->categoryType,
         ];
     }
 }

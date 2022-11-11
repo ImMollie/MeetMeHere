@@ -20,6 +20,8 @@
         var step, nextstep, prevstep, showProfile;
         setTimeout(function() {
             $(document).ready(function() {
+                
+
                 var myCarousel = document.querySelector('#carouselExampleSlidesOnly')
                 var carousel = new bootstrap.Carousel(myCarousel)
                 $(".editProfile").click(function() {
@@ -61,7 +63,7 @@
                     }
                 })
             });
-        }, 1000);
+        }, 500);
 
 
 
