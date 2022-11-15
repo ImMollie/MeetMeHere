@@ -1,5 +1,5 @@
-<template>    
-    <section style="background-color: #eee;">        
+<template> 
+    <section style="">        
         <div class="container py-5">            
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-4">
@@ -7,7 +7,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
                             style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                             <i class="fas fa-angle-left"></i>
-                            <p class="mb-0 fw-bold">Chat</p>
+                            <p class="mb-0 fw-bold">Chat to: {{this.activeid.nickname}}</p>
                             <i class="fas fa-times"></i>
                         </div>
                         <div class="card-body">
@@ -47,7 +47,7 @@
 
 <script>
     export default {
-        props: ['user','idrec','dupa'],
+        props: ['user','idrec'],
 
         data() {
             return {
@@ -63,12 +63,12 @@
 
         methods: {
             fetchMessages() {
-                axios.get('/private-message/' + this.activeid).then(response => {
+                axios.get('/private-message/' + this.activeid.id).then(response => {
                     this.messages = response.data;
                 });
             },
             sendMessage() {
-            axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
+            axios.post('/private-message/' + this.activeid.id, {message: this.newMessage}).then(response => {
                 this.newMessage = '';
                 //this.messages.push(response.data.message);
                 this.fetchMessages();

@@ -18,8 +18,16 @@ class userProfileController extends Controller
 
     public function profileUpdate(ProfileRequest $request)
     {
+        
         $userID = Auth::user();
-        $userID->update($request->all());        
+        $input = $request->all();
+        if($request->hasFile('photo')){
+            
+            $imagename = $request->file('photo')->getClientOriginalName();
+            $path = $request->file('photo')->storeAs('public/images/usersPhotos',$imagename);
+            $input['photo'] = $imagename;
+        }
+        $userID->update($input);        
         // User::update([
         //     'nickname' => $request->nickname,
         //     'firstname' => $request->firstname,

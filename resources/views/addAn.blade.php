@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-header />
+    <x-header/>
     <section>
         <div class="container">
             <div class="row d-flex justify-content-center pt-5 pb-5">

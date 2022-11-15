@@ -19,8 +19,9 @@ class ChatsController extends Controller
  *
  * @return \Illuminate\Http\Response
  */
-    public function index($id){
-        return view('chat', compact('id'));
+    public function index($user){
+        $user = User::findorfail($user)->first();        
+        return view('chat', compact('user'));
     }
 
 /**

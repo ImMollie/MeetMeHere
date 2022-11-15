@@ -4,7 +4,6 @@ require('./bootstrap');
 global.bootstrap = require('bootstrap');
 
 import { createApp } from 'vue'
-import Chats from './components/Chats/Index'
 import chatForm from './components/Chats/ChatForm'
 
 const app = createApp({});
@@ -18,5 +17,4 @@ const app = createApp({});
 //     });
 
 app.component('chat-form', chatForm);
-app.component('chat-index', Chats);
 app.mount('#app')

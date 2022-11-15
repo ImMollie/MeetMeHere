@@ -19,12 +19,12 @@
                    <h1>
                      Web application supporting the organization of group activities
                    </h1>
-                   <p>                    
+                   {{-- <p>                    
                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                   </p>
+                   </p> --}}
                    <div class="btn-box">
-                     <a href="" class="btn1">
-                       Read more
+                     <a href="#readmore" class="btn1">
+                       Read about it
                      </a>
                    </div>
                  </div>
@@ -90,7 +90,7 @@
 
  <!-- food section -->
 
- <section class="food_section layout_padding-bottom">
+ <section class="food_section layout_padding-bottom" id="categories">
    <div class="container">
      <div class="heading_container heading_center">
        <h2>
@@ -100,23 +100,24 @@
 
      <ul class="filters_menu">
        <li class="active" data-filter="*">All</li>
-       <li data-filter=".burger">Social</li>
-       <li data-filter=".pizza">Sport</li>
-       <li data-filter=".pasta">Travels</li>
-       <li data-filter=".fries">Others</li>
+       <li data-filter=".Social">Social</li>
+       <li data-filter=".Sport">Sport</li>
+       <li data-filter=".Travels">Travels</li>
+       <li data-filter=".Others">Others</li>
      </ul>
 
      <div class="filters-content">
        <div class="row grid">
-         <div class="col-sm-6 col-lg-4 all pizza">
+        @foreach($categories as $category)
+         <div class="col-sm-6 col-lg-4 all {{$category->categoryType}}">
            <div class="box">
              <div>
                <div class="img-box">
-                 <img src="images/index/f1.png" alt="">
+                 <img src="{{ asset($category->categoryIMG) }}" alt="">
                </div>
                <div class="detail-box">
                  <h5>
-                   Delicious Pizza
+                  {{ $category->categoryName }}
                  </h5>
                  <p>
                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
@@ -125,142 +126,7 @@
              </div>
            </div>
          </div>
-         <div class="col-sm-6 col-lg-4 all burger">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f2.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Delicious Burger
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all pizza">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f3.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Delicious Pizza
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all pasta">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f4.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Delicious Pasta
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all fries">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f5.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   French Fries
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all pizza">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f6.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Delicious Pizza
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all burger">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f7.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Tasty Burger
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all burger">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f8.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Tasty Burger
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-sm-6 col-lg-4 all pasta">
-           <div class="box">
-             <div>
-               <div class="img-box">
-                 <img src="images/index/f9.png" alt="">
-               </div>
-               <div class="detail-box">
-                 <h5>
-                   Delicious Pasta
-                 </h5>
-                 <p>
-                   Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                 </p>                 
-               </div>
-             </div>
-           </div>
-         </div>
+         @endforeach         
        </div>
      </div>
      <div class="btn-box">
@@ -275,7 +141,7 @@
 
  <!-- about section -->
 
- <section class="bg-img layout_padding mb-5">
+ <section class="bg-img layout_padding mb-5" id="readmore">
    <div class="container">
      <div class="row text-align-center"> 
       <div class="col-md"> 
@@ -306,7 +172,7 @@
  <!-- footer section -->
  <footer class="footer_section">
    <div class="container">
-     <div class="row">
+     {{-- <div class="row">
        <div class="col-md-4 footer-col">
          <div class="footer_contact">
            <h4>
@@ -372,7 +238,7 @@
            10.00 Am -10.00 Pm
          </p>
        </div>
-     </div>
+     </div> --}}
      <div class="footer-info">
        <p>
          &copy; <span id="displayYear"></span> All Rights Reserved By

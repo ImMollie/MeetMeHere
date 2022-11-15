@@ -25,8 +25,7 @@ class ProfileRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
-        
+    {        
         return [
             'nickname' => ['required', 'string', 'max:20',Rule::unique('users')->ignore(Auth::user()->id)],
             'firstname' => ['required', 'alpha', 'max:25'],
@@ -36,7 +35,7 @@ class ProfileRequest extends FormRequest
             // 'password' => ['required', 'string', Password::min(8)->letters()->mixedCase()->numbers(), 'confirmed'],
             'city' => ['required','alpha'],
             'street' => ['required','string'],
-            'number' => ['required','numeric'],       
+            'number' => ['required','numeric'], 
         ];
     }
 }

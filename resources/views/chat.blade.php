@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<x-header/>
     {{-- <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -18,5 +19,5 @@
         </div>
     </div> --}}
 
-    <chat-form :idrec="{{$id}}" :user="{{ Auth::user() }}"></chat-form> 
+    <chat-form :idrec="{{$user}}" :user="{{ Auth::user() }}"></chat-form> 
 @endsection

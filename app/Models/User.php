@@ -35,6 +35,7 @@ class User extends Authenticatable
         'facebook',
         'twitter',
         'instagram',
+        'photo',
     ];
 
     /**

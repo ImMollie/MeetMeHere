@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
-<section style="background-color: #09284b;">
+
+<x-header/>
+<section style="">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-13 pt-5 pb-5">
