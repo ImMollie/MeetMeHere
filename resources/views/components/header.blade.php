@@ -29,6 +29,12 @@
                 </ul>
                 <div class="user_option">
                     <a href="{{ route('indexProfile') }}" class="user_link">
+                        <i class="fa-solid fa-bell" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ route('chatRoom') }}" class="user_link">
+                        <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ route('indexProfile') }}" class="user_link">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     @auth

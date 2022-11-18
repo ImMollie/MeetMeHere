@@ -48,7 +48,7 @@
                     <h4 class="mr-1">{{ $announcement->date1 }}</h4><span
                         class="strike-text">{{ $announcement->date2 }}</span>
                 </div>
-                <h6 class="text-success">Free shipping</h6>
+                <h6 class="text-success">-</h6>
                 <div class="d-flex flex-column mt-4">
                     <a class="btn btn-primary btn-sm"
                         href="{{ route('nicknameProfile', ['slug' => $announcement->userAnnouncement->slug]) }}">Creator

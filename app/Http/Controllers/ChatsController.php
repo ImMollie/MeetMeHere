@@ -53,7 +53,7 @@ class ChatsController extends Controller
         ->where(['user_id' => Auth::user()->id, 'receiver_id' => $user->id])
         ->orWhere(function($query) use ($user){
         $query->where(['user_id' => $user->id, 'receiver_id' => Auth::user()->id]);})
-        ->get();
+        ->get();       
         return $temp;
     }
 

@@ -17,6 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/chat.scss', 'public/css')
     .sass('resources/sass/style.scss', 'public/css')
     .sass('resources/sass/responsive.scss', 'public/css')
+    .sass('resources/sass/chatRoom.scss', 'public/css')
     .copy(
         'node_modules/@fortawesome/fontawesome-free/webfonts',
         'public/webfonts')

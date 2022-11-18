@@ -1,18 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <x-header/>
-    <div class="container">
+    <div class="container mt-5">
         <div class="main-body">
-
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb" class="main-breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                </ol>
-            </nav>
-            <!-- /Breadcrumb -->
             <form method="POST" action="{{ route('profileUpdate') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row gutters-sm">
@@ -22,9 +12,9 @@
                                 <div class="d-flex flex-column align-items-center text-center">                                    
                                     <img src="{{asset('/storage/images/usersPhotos/'.$elements->photo)}}" alt="Admin" class="rounded-circle" width="150">
                                     <div class="mt-3">
-                                        <h4>John Doe</h4>
-                                        <p class="text-secondary mb-1">Full Stack Developer</p>
-                                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                        <h4>{{ $elements->firstname }} {{ $elements->lastname }}</h4>
+                                        <p class="text-secondary mb-1">{{ $elements->nickname }}</p>
+                                        <p class="text-muted font-size-sm">Poland, {{ $elements->city }}</p>
                                         @if (isset($switcher))
                                             @if ($switcher)
                                             <div class="btn btn-primary">
@@ -120,6 +110,8 @@
                         {{-- Koniec edycji --}}
                     </div>
                     <div class="col-md-8">
+                        @if (isset($switcher))
+                            @if ($switcher)
                         <div class="card mb-3">
                             <div class="card-body2 card-body show">
                                 <div class="row">
@@ -167,16 +159,16 @@
                                     </div>
                                 </div>
                                 <hr>
-                                @if (isset($switcher))
-                                    @if ($switcher)
+                                
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <button class="btn btn-info editProfile" type="button">Edit</button>
                                             </div>
                                         </div>
-                                    @endif
-                                @endif
+                                    
                             </div>
+                            @endif
+                                @endif
                             {{-- Koniec wyswietlania --}}
                             <div class="card-body2 card-body">
                                 <div class="row">
@@ -327,3 +319,20 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script type="module">
+    $(document).ready(function(){
+    $(".editProfile").click(function() {
+        $($(this).parent().parent().parent()).removeClass("show");
+        $($(this).parent().parent().parent().next()).addClass("show");
+        $(".showSocial").css({
+            'display': 'none'
+        });
+        $(".editSocial").css({
+            'display': 'block'
+        });
+    });
+    });
+</script>
+@endpush

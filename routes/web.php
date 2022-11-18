@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\ChatRoomController;
 use App\Http\Controllers\userProfileController;
 use App\Http\Controllers\addAnnouncementController;
 use App\Http\Controllers\SearchAnnouncementController;
@@ -35,9 +36,11 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('messages', [ChatsController::class,'fetchMessages'])->name('fetchMessages');
     Route::get('/currentUser', [ChatsController::class,'currentUser'])->name('currentUser');
     Route::post('messages', [ChatsController::class,'sendMessage'])->name('sendMessage');
+    Route::get('/chat', [ChatRoomController::class,'index'])->name('chatRoom');
 
     Route::get('private-message/{user}', [ChatsController::class,'privateMessages'])->name('privateMessages');
     Route::post('private-message/{user}', [ChatsController::class,'sendPrivateMessage'])->name('sendPrivateMessage');
+    Route::get('/users', [ChatRoomController::class,'users'])->name('users');
 
     // Route::get('filter', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
 });

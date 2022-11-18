@@ -49,11 +49,11 @@
                                         @foreach ($categories as $type)
                                             @if ($type->categoryType != $lastType)
                                                 <div id="accordion">
-                                                    <button class="card btn-primary btn mb-4" style="width:100%; margin-bottom: 10px"type="button"
+                                                    <button class="btn my-4 text-center box-shadow" style="width:100%" type="button"
                                                         data-bs-toggle="collapse"
                                                         data-bs-target="#collapse{{ $type->id }}" aria-expanded="false"
                                                         aria-controls="collapse{{ $type->id }}">
-                                                        {{ $type->categoryType }}                                                        
+                                                        <h4>{{ $type->categoryType }}</h4>                                                  
                                                         @foreach ($categories->where('categoryType', $type->categoryType) as $category)
                                                             <div id="collapse{{ $type->id }}"
                                                                 class="collapse multi-collapse form-check">
@@ -329,3 +329,115 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function(){
+
+var step, nextstep, prevstep;
+
+    if ($(".show").hasClass("step1")) {
+        $(".prevstep").css({
+            'display': 'none'
+        });
+    }
+
+    $(".nextstep").click(function() {
+        step = $(this).parent().parent();
+        nextstep = $(this).parent().parent().next();
+        $(".prevstep").css({
+            'display': 'block'
+        });
+        $(step).removeClass("show");
+        $(nextstep).addClass("show");
+    });
+
+    $(".prevstep").click(function() {
+        step = $(".show");
+        prevstep = $(".show").prev();
+        $(step).removeClass("show");
+        $(prevstep).addClass("show");
+        $(".prevstep").css({
+            'display': 'block'
+        });
+        if ($(".show").hasClass("step1")) {
+            $(".prevstep").css({
+                'display': 'none'
+            });
+        }
+    });      
+
+
+
+    window.dateDisabled = function() {
+        if ($('input[name="oneDay"]').is(':checked')) {
+            $(".oneDay").val("");
+            $(".oneDay").prop('disabled', true);
+        } else {
+            $(".oneDay").prop('disabled', false);
+        }
+    }
+
+var map, marker, geocode;
+window.Modal = function() {
+    $("#location-modal").modal('show');
+    var location = new google.maps.LatLng(0, 0);
+    var mapProperty = {
+        center: location,
+        zoom: 25,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapProperty);
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: location
+    });
+
+    geocodePosition(marker.getPosition());
+
+    google.maps.event.addListener(marker, 'dragend', function() {
+        map.setCenter(marker.getPosition());
+        geocodePosition(marker.getPosition());
+        $("#latitude").val(marker.getPosition().lat());
+        $("#longitude").val(marker.getPosition().lng());
+
+    });
+    currentLat = $("#latitude").val();
+    currentLng = $("#longitude").val();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            $("#latitude").val(pos.lat);
+            $("#longitude").val(pos.lng);
+            marker.setPosition(pos);
+            map.setCenter(marker.getPosition());
+            geocodePosition(marker.getPosition());
+        });
+    }
+}
+
+window.geocodePosition = function (pos) {
+
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+            latLng: pos
+        },
+        function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                $("#address-label").html(results[0].formatted_address);
+                $("#address").val(results[0].formatted_address);
+
+            } else {
+                $("#address-label").html('Cannot determine address at that location');
+            }
+        }
+    );
+}
+});
+</script>
+@endpush
