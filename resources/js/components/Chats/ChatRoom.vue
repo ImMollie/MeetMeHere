@@ -33,7 +33,7 @@
 				<img :src="'/storage/images/usersPhotos/placeholder.png'" v-else class="img-fluid" alt="" />
 				<p>{{activeUser.firstname}} {{activeUser.lastname}}</p>		
 			</div>
-			<div class="social-media">
+			<div v-if="activeUser" @click="przekieruj(activeUser.slug)" class="social-media">
 				<i class="fa-brands fa-facebook fa-xl" style="color:#1093f3"></i>
 				<i class="fa-brands fa-twitter fa-xl" style="color:#1093f3"></i>
 				<i class="fa-brands fa-instagram fa-xl" style="color:red"></i>
@@ -80,6 +80,9 @@
         },
 
         methods: {
+			przekieruj(slug){
+				window.location.href = "/profile/"+slug;
+			},
             fetchMessages(receiverid) {
                 axios.get('/private-message/' + receiverid).then(response => {
                     this.messages = response.data;
@@ -92,12 +95,14 @@
                 });
             },
             sendMessage() {
-				if(this.newMessage != '')
-            axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
-                this.newMessage = '';
-                //this.messages.push(response.data.message);
-                this.fetchMessages(this.activeid);
-            });
+				if((this.newMessage != '') && (this.activeid != null))
+				{
+					axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
+						this.newMessage = '';
+						//this.messages.push(response.data.message);
+						this.fetchMessages(this.activeid);
+					});
+				}
         }
         }    
     }
