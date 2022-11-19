@@ -55,8 +55,8 @@
 					<div class="system2 p-3 ms-3 w-25" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
 						<p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia?</p>
 						<div class="d-flex justify-content-between mt-2">
-						<button type="button" class="btn btn-primary">Tak</button>
-						<button type="button" class="btn btn-primary">Nie</button>
+						<button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;">Tak</button>
+						<button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;">Nie</button>
 						</div>
 					</div>
 				</div>
