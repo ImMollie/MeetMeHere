@@ -25,3 +25,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('privatechat.{receiverid}', function ($user,$receiverid) {
   return auth()->check();
 });
+
+Broadcast::channel('privatechatstatus', function ($user) {
+  if(auth()->check())
+    return $user;
+});

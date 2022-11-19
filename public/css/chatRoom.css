@@ -427,10 +427,6 @@
   background: #2ecc71;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap span.away {
-  background: #f1c40f;
-}
-
 #frame #sidepanel #contacts ul li.contact .wrap span.busy {
   background: #e74c3c;
 }
@@ -627,6 +623,15 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 900px) {
+  #frame .content .messages .system {
+    justify-content: start !important;
+  }
+
+  #frame .content .messages .system .system2 {
+    width: 92% !important;
+  }
+}
 #frame .content .messages ul li.sent img {
   margin: 0px 8px 0 0;
 }
