@@ -49,11 +49,15 @@ class ChatsController extends Controller
     // }
 
     public function privateMessages(User $user){
-        $temp = Message::with('user')
+        $temp = Message::with(['user' => function($query) {
+            $query->select('id','slug','firstname','lastname','nickname','photo');
+        }])
         ->where(['user_id' => Auth::user()->id, 'receiver_id' => $user->id])
         ->orWhere(function($query) use ($user){
-        $query->where(['user_id' => $user->id, 'receiver_id' => Auth::user()->id]);})
-        ->get();       
+        $query->where(['user_id' => $user->id, 'receiver_id' => Auth::user()->id]);
+        })
+        ->get();     
+        //dd($temp);  
         return $temp;
     }
 
@@ -63,7 +67,7 @@ class ChatsController extends Controller
         $input['receiver_id'] = $user->id;
         $test = User::find(Auth::user()->id);
         $message = $test->messages()->create($input);
-        broadcast(new MessageSent($test, $message->load('user')))->toOthers();
+        broadcast(new MessageSent($message->load('user')))->toOthers();
         return response(['status' => 'Message Private Sent!']);
     }
 

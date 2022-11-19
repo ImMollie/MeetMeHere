@@ -12,13 +12,16 @@
 		<div id="contacts">
 			<ul>
 				<li v-for="receiver in users"  :key="receiver.id" @click="fetchMessages(receiver.id); activeUser = receiver;" class="contact" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
-					<div v-if="user.id != receiver.id" class="wrap">						
+					<div v-if="user.id != receiver.id" class="wrap">					
 						<img v-if="receiver.photo" :src="'/storage/images/usersPhotos/'+receiver.photo"  alt="" />
 						<img :src="'/storage/images/usersPhotos/placeholder.png'" v-else  alt="" />
 						<div class="meta">
 							<p class="name">{{receiver.firstname}} {{receiver.lastname}}</p>
 							<div>
-								<p class="preview"></p>
+								<p class="preview" v-for="test in receiver.allmessages.slice((receiver.allmessages.length-1),receiver.allmessages.length)" :key="test.id">
+									<div v-if="user.id == test.user_id">Ty: {{test.message}}</div>
+									<div v-else>{{test.message}}</div>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -59,6 +62,7 @@
 </template>
 
 <script>
+
     export default {
         props: ['user'],
 
@@ -74,6 +78,12 @@
 
 		created(){			
 			this.fetchUsers();
+
+			window.Echo.channel('privatechat.'+this.user.id)
+			.listen('MessageSent',(e)=>{
+				console.log('halo');
+				this.messages.push(e.message);
+			});
 		},
 
         mounted(){        
