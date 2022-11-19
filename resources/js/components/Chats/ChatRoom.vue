@@ -3,7 +3,9 @@
 	<div id="sidepanel">
 		<div id="profile">
 			<div class="wrap">
-				<img id="profile-img" :src="'/storage/images/usersPhotos/'+user.photo" class="online" alt="" />
+				
+				<img id="profile-img" :src="'/storage/images/usersPhotos/'+user.photo" v-if="user.photo" class="online img-fluid" alt="" />
+				<img id="profile-img" :src="'/storage/images/usersPhotos/placeholder.png'" v-else class="online img-fluid" alt="" />
 				<p>{{user.firstname}} {{user.lastname}}</p>
 				<div id="expanded">
 					<label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
@@ -22,10 +24,10 @@
 						<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
 						<div class="meta">
 							<p class="name">{{receiver.firstname}} {{receiver.lastname}}</p>
+							
 							<div>
 								<p class="preview" v-for="message in messages.slice(messages.length-1,messages.length)" :key="message.id">{{message.message}}</p>
 							</div>
-
 						</div>
 					</div>
 				</li>						
@@ -34,8 +36,11 @@
 	</div>
 	<div class="content">
 		<div class="contact-profile">
-			<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-			<p v-for="message in messages.slice(0,1)">{{message.user.firstname}} {{message.user.lastname}}</p>
+			<div v-for="message in messages.slice(0,1)" :key="message.id">
+				<img v-if="messages.length" :src="'/storage/images/usersPhotos/'+message.user.photo" alt="" />
+				<p v-if="message.user.id != user.id">{{message.user.firstname}} {{message.user.lastname}}</p>
+				<p v-else> {{message.receiver_id.firstname}} {{message.receiver_id.lastname}}</p>			
+			</div>
 			<div class="social-media">
 				<i class="fa fa-facebook" aria-hidden="true"></i>
 				<i class="fa fa-twitter" aria-hidden="true"></i>
@@ -71,6 +76,7 @@
                 messages: [],
 				users: [],
                 activeid: null,
+				activeUser: null,
             }
         },
 
