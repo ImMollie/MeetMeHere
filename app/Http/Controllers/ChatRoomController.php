@@ -34,9 +34,9 @@ class ChatRoomController extends Controller
         $messages = Message::where('receiver_id',Auth::user()->id)->select('user_id')->groupBy('user_id')->get();   
         //dd($messages); 
         foreach ($messages as $message) {
-            array_push($test, User::where('id',$message->user_id)->first()) ;
+            array_push($test, User::where('id',$message->user_id)->with('messages')->first());
         }
-        //dd($test);
+        
         return $test;
     }
 }
