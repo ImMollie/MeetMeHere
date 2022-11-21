@@ -28276,6 +28276,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+}
+
 .navigation {
   width: 100%;
   border-bottom: 1px solid #b393d3;
@@ -28369,7 +28373,7 @@ a {
 
 .formCard {
   border-radius: 25px;
-  background-color: #f2dec6;
+  background-color: white;
   color: black;
   background-clip: border-box;
   border: 1px solid white;
@@ -28385,85 +28389,6 @@ a {
   margin-left: 80px;
   z-index: 0;
   border-right: 1px solid grey;
-}
-
-#progress-bar {
-  position: absolute;
-  left: 100px;
-  overflow: hidden;
-  color: black;
-}
-
-#progress-bar li {
-  list-style-type: none;
-  font-size: 8px;
-  font-weight: 400;
-  margin-bottom: 36px;
-}
-
-#progress-bar li:nth-child(4) {
-  margin-bottom: 100px;
-}
-
-#progress-bar .step0:before {
-  content: "";
-  color: #fff;
-}
-
-#progress-bar li:before {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  display: block;
-  font-size: 20px;
-  background: #fff;
-  border: 2px solid #E53935;
-  border-radius: 50%;
-  margin: auto;
-}
-
-#progress-bar li:last-child:before {
-  width: 40px;
-  height: 40px;
-}
-
-#progress-bar li:after {
-  content: "";
-  width: 3px;
-  height: 66px;
-  background: #BDBDBD;
-  position: absolute;
-  left: 50px;
-  top: 15px;
-  z-index: 1;
-}
-
-#progress-bar li:last-child:after {
-  top: 147px;
-  height: 132px;
-}
-
-#progress-bar li:nth-child(3):after {
-  top: 81px;
-}
-
-#progress-bar li:nth-child(2):after {
-  top: 0px;
-}
-
-#progress-bar li:first-child:after {
-  position: absolute;
-  top: -81px;
-}
-
-#progress-bar li.active:after {
-  background: #E53935;
-}
-
-#progress-bar li.active:before {
-  background: #E53935;
-  font-family: inherit;
-  content: "\f00c";
 }
 
 .card2 {

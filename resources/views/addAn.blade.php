@@ -349,6 +349,22 @@ var step, nextstep, prevstep;
         });
         $(step).removeClass("show");
         $(nextstep).addClass("show");
+
+        $("#progress-bar li").eq($(".card2").index(nextstep)).addClass("active");
+
+        step.animate({}, {
+        step: function() {
+
+            step.css({
+        'display': 'none',
+        'position': 'relative'
+        });
+
+        nextstep.css({
+        'display': 'block'
+        });
+        }
+        });
     });
 
     $(".prevstep").click(function() {

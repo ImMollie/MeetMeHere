@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-			<ul>
+			<ul id="messages">
 				<li v-for="message in messages" :key="message.id" :class="[ message.user.nickname != user.nickname ? 'sent' : 'replies' ]">
 					<img class="img-fluid" v-if="message.user.photo" :src="'/storage/images/usersPhotos/'+message.user.photo" alt="" />
 					<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
@@ -65,7 +65,7 @@
 		</div>
 		<div class="message-input">
 			<div class="wrap">
-			<input type="text" v-model="newMessage" @click="sendMessage()" placeholder="Write your message..." />
+			<input type="text" v-model="newMessage" v-on:keyup.enter="sendMessage()" placeholder="Write your message..." />
 			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
 			<button class="submit" @click="sendMessage()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
 			</div>
@@ -90,10 +90,11 @@
 
 		created(){			
 			this.fetchUsers();
-			var channel = Echo.private('privateChat.'+this.user.id)
-			channel.listen('.MessageSent', (e) => {
+			window.Echo.private('privateChat.'+this.user.id)
+			.listen('MessageSent', (e) => {
+				if(this.messages.length > 0)
 				this.messages.push(e.message);
-				console.log('asd')
+				setTimeout(this.scrollToEnd,100);
 			});
 		},
 
@@ -114,16 +115,21 @@
             },
             sendMessage() {
 				if(this.newMessage != '' && this.activeid != null)
-            axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
+            	axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
                 this.newMessage = '';
                 //this.messages.push(response.data.message);
                 this.fetchMessages(this.activeid);
-                //asd
+				setTimeout(this.scrollToEnd,100);
             });
         },
 		profileLink(slug){
 			window.location.href = "/profile/"+slug;
+		},
+		scrollToEnd(){
+			console.log($('.messages').offset());
+			$('.messages').animate({ scrollTop: $('.messages').offset().top + $('#messages').height()}, 1000);
 		}
+
         }    
     }
 </script>
