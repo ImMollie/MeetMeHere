@@ -14,7 +14,6 @@
                                     <li class="step0"></li>
                                     <li class="step0"></li>
                                     <li class="step0"></li>
-                                    <li class="step0"></li>
                                 </ul>
                                 <h6>Step 1</h6>
                                 <h6>Step 2</h6>

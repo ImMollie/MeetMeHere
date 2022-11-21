@@ -124,7 +124,14 @@
 
 #progress-bar li:last-child:after {
     top: 147px;
-    height: 200px
+}
+
+#progress-bar li:nth-child(4):after {
+    top: 147px
+}
+
+#progress-bar li:last-child:before {
+    line-height: 40px;
 }
 
 #progress-bar li:nth-child(3):after {
