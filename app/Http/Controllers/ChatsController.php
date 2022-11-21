@@ -62,8 +62,8 @@ class ChatsController extends Controller
         $input = $request->all();
         $input['receiver_id'] = $user->id;
         $test = User::find(Auth::user()->id);
-        $message = $test->messages()->create($input);
-        broadcast(new MessageSent($test, $message->load('user')))->toOthers();
+        $message = $test->messages()->create($input);        
+        broadcast(new MessageSent($message->load('user')))->toOthers();
         return response(['status' => 'Message Private Sent!']);
     }
 

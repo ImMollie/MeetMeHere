@@ -102,8 +102,7 @@
                                                     <div class="single_quiz_card">
                                                         <div class="quiz_card_content">
                                                             <div class="quiz_card_icon">
-                                                                <img
-                                                                    src="https://img.freepik.com/premium-vector/bearded-man-smiling-showing-thumbs-up-sign-guy-with-gesture-meaning-approval-okay-like_316839-1218.jpg?w=826" />
+                                                                <img src="https://img.freepik.com/premium-vector/bearded-man-smiling-showing-thumbs-up-sign-guy-with-gesture-meaning-approval-okay-like_316839-1218.jpg?w=826" class="img-fluid" />
                                                             </div>
                                                             <div class="quiz_card_title">
                                                                 <h4>1</h4>

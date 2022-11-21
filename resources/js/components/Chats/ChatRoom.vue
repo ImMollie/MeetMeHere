@@ -1,32 +1,30 @@
 <template> 
-<div id="frame">
+<div id="frame" class="mx-auto my-5 pb-5">
 	<div id="sidepanel">
 		<div id="profile">
-			<div class="wrap">
-				
+			<div class="wrap">				
 				<img id="profile-img" :src="'/storage/images/usersPhotos/'+user.photo" v-if="user.photo" class="online img-fluid" alt="" />
 				<img id="profile-img" :src="'/storage/images/usersPhotos/placeholder.png'" v-else class="online img-fluid" alt="" />
-				<p>{{user.firstname}} {{user.lastname}}</p>
-				<div id="expanded">
-					<label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="mikeross" />
-					<label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="ross81" />
-					<label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="mike.ross" />
-				</div>
+				<p>{{user.firstname}} {{user.lastname}}</p>				
 			</div>
 		</div>		
 		<div id="contacts">
 			<ul>
-				<li v-for="receiver in users"  :key="receiver.id" @click="fetchMessages(receiver.id)" class="contact" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
+				<li v-for="receiver in users"  :key="receiver.id" @click="fetchMessages(receiver.id); activeUser=receiver;" class="contact user-select-none" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
 					<div v-if="user.id != receiver.id" class="wrap">						
-						<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+						<img v-if="receiver.photo" :src="'/storage/images/usersPhotos/'+receiver.photo" alt="" />
+						<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
 						<div class="meta">
-							<p class="name">{{receiver.firstname}} {{receiver.lastname}}</p>
-							
+							<p class="name">{{receiver.firstname}} {{receiver.lastname}}</p>							
 							<div>
-								<p class="preview" v-for="message in messages.slice(messages.length-1,messages.length)" :key="message.id">{{message.message}}</p>
+								<p class="preview" v-for="message in receiver.allMessages.slice(receiver.allMessages.length-1, receiver.allMessages.length)" :key="message.id">
+									<div v-if="user.id == message.user_id"> Ty: 
+										{{message.message}}
+									</div>
+									<div v-else>
+										{{message.message}}
+									</div>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -36,21 +34,31 @@
 	</div>
 	<div class="content">
 		<div class="contact-profile">
-			<div v-for="message in messages.slice(0,1)" :key="message.id">
-				<img v-if="messages.length" :src="'/storage/images/usersPhotos/'+message.user.photo" alt="" />
-				<p v-if="message.user.id != user.id">{{message.user.firstname}} {{message.user.lastname}}</p>
-				<p v-else> {{message.receiver_id.firstname}} {{message.receiver_id.lastname}}</p>			
+			<div v-if="activeUser" @click="profileLink(activeUser.slug)" style="cursor: pointer;">
+				<img v-if="activeUser.photo" :src="'/storage/images/usersPhotos/'+activeUser.photo" alt="" />
+				<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
+				<p>{{activeUser.firstname}} {{activeUser.lastname}}</p>							
 			</div>
 			<div class="social-media">
-				<i class="fa fa-facebook" aria-hidden="true"></i>
-				<i class="fa fa-twitter" aria-hidden="true"></i>
-				<i class="fa fa-instagram" aria-hidden="true"></i>
+				<i class="fa-brands fa-facebook fa-xl" style="color:#1093f3"></i>
+                <i class="fa-brands fa-twitter fa-xl" style="color:#1093f3"></i>
+                <i class="fa-brands fa-instagram fa-xl" style="color:red"></i>
 			</div>
 		</div>
 		<div class="messages">
+			<div v-if="activeUser" class="system d-flex flex-row justify-content-center mb-4 user-select-none">
+                    <div class="system2 p-3 ms-3 w-25" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                        <p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia?</p>
+                        <div class="d-flex justify-content-between mt-2">
+                        <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;">Tak</button>
+                        <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;">Nie</button>
+                        </div>
+                    </div>
+                </div>
 			<ul>
 				<li v-for="message in messages" :key="message.id" :class="[ message.user.nickname != user.nickname ? 'sent' : 'replies' ]">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+					<img class="img-fluid" v-if="message.user.photo" :src="'/storage/images/usersPhotos/'+message.user.photo" alt="" />
+					<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
 					<p>{{message.message}}</p>
 				</li>
 			</ul>
@@ -76,12 +84,17 @@
                 messages: [],
 				users: [],
                 activeid: null,
-				activeUser: null,
+				activeUser: null,				
             }
         },
 
 		created(){			
 			this.fetchUsers();
+			var channel = Echo.private('privateChat.'+this.user.id)
+			channel.listen('.MessageSent', (e) => {
+				this.messages.push(e.message);
+				console.log('asd')
+			});
 		},
 
         mounted(){            
@@ -100,14 +113,17 @@
                 });
             },
             sendMessage() {
-				if(this.newMessage != '')
+				if(this.newMessage != '' && this.activeid != null)
             axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
                 this.newMessage = '';
                 //this.messages.push(response.data.message);
                 this.fetchMessages(this.activeid);
                 //asd
             });
-        }
+        },
+		profileLink(slug){
+			window.location.href = "/profile/"+slug;
+		}
         }    
     }
 </script>

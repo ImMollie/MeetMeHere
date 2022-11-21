@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    public function messages2()
+    {
+        return $this->hasMany(Message::class, 'receiver_id','id');
+    }
+
+    public function allMessages()
+    {
+        return collect([$this->messages()->get(), $this->messages2()->get()])->flatten();        
+    }
 }

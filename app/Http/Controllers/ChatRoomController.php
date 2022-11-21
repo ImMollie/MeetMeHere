@@ -29,12 +29,13 @@ class ChatRoomController extends Controller
 
     public function users()
     {  
-
         $test = [];
         $messages = Message::where('receiver_id',Auth::user()->id)->select('user_id')->groupBy('user_id')->get();   
         //dd($messages); 
         foreach ($messages as $message) {
-            array_push($test, User::where('id',$message->user_id)->first()) ;
+            $userMessage = User::select('id','firstname','lastname','slug','photo')->where('id', $message->user_id)->first();            
+            $userMessage['allMessages'] = $userMessage->allMessages()->sortBy('id')->flatten();            
+            array_push($test, $userMessage);
         }
         //dd($test);
         return $test;
