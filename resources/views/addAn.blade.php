@@ -379,6 +379,23 @@ var step, nextstep, prevstep;
                 'display': 'none'
             });
         }
+
+        $("#progress-bar li").eq($(".card2").index(step)).removeClass("active");
+
+        
+        step.animate({}, {
+        step: function() {
+
+            step.css({
+        'display': 'none',
+        'position': 'relative'
+        });
+
+        prevstep.css({
+        'display': 'block'
+        });
+        }
+        });
     });      
 
 
