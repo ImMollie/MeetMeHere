@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Message;
 use Illuminate\Support\Str;
+use App\Models\Announcement;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -75,5 +76,10 @@ class User extends Authenticatable
     public function allMessages()
     {
         return collect([$this->messages()->get(), $this->messages2()->get()])->flatten();        
+    }
+
+    public function announcementCreator()
+    {
+        return $this->hasOne(Announcement::class,'user_id','id');        
     }
 }

@@ -36,7 +36,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoDY1RWjbut0htw-VZxTU6bi4Ns6WZWkk"></script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoDY1RWjbut0htw-VZxTU6bi4Ns6WZWkk"></script>
 <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
 @stack('scripts')
 

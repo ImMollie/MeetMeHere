@@ -10,7 +10,7 @@
 		</div>		
 		<div id="contacts">
 			<ul>
-				<li v-for="receiver in users"  :key="receiver.id" @click="fetchMessages(receiver.id); activeUser=receiver;" class="contact user-select-none" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
+				<li v-for="receiver in users"  :key="receiver.id" @click="getPoke(receiver.id); fetchMessages(receiver.id); activeUser=receiver; " class="contact user-select-none" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
 					<div v-if="user.id != receiver.id" class="wrap">						
 						<img v-if="receiver.photo" :src="'/storage/images/usersPhotos/'+receiver.photo" alt="" />
 						<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
@@ -45,16 +45,16 @@
                 <i class="fa-brands fa-instagram fa-xl" style="color:red"></i>
 			</div>
 		</div>
-		<div class="messages">
-			<div v-if="activeUser" class="system d-flex flex-row justify-content-center mb-4 user-select-none">
-                    <div class="system2 p-3 ms-3 w-25" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
-                        <p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia?</p>
-                        <div class="d-flex justify-content-between mt-2">
-                        <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;">Tak</button>
-                        <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;">Nie</button>
-                        </div>
+		<div class="messages">			
+			<div v-if="activeUser && poke.userpoked_id == user.id" class="system d-flex flex-row justify-content-center mb-4 user-select-none">				
+                <div class="system2 p-3 ms-3 w-25" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                    <p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia?</p>
+                    <div class="d-flex justify-content-between mt-2">
+                        <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;" @click="announcementYes()">Tak</button>
+                        <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;" @click="announcementNo()">Nie</button>
                     </div>
                 </div>
+            </div>
 			<ul id="messages">
 				<li v-for="message in messages" :key="message.id" :class="[ message.user.nickname != user.nickname ? 'sent' : 'replies' ]">
 					<img class="img-fluid" v-if="message.user.photo" :src="'/storage/images/usersPhotos/'+message.user.photo" alt="" />
@@ -84,7 +84,8 @@
                 messages: [],
 				users: [],
                 activeid: null,
-				activeUser: null,				
+				activeUser: null,	
+				poke: '',			
             }
         },
 
@@ -102,11 +103,31 @@
         },
 
         methods: {
+			getPoke(receiverid){
+				axios.get('/getpoke/' + receiverid).then(response => {
+                    this.poke = response.data;
+                });
+				
+			},
+			announcementYes(){
+				axios.get('/announcementYes/' + this.poke.id).then(response => {
+                    // window.location.href = "/search_announcement/";
+                });
+				
+			},
+			announcementNo(){
+				axios.get('/announcementNo/' + this.poke.id).then(response => {
+                    // window.location.href = "/search_announcement/";
+                });
+				
+			},
             fetchMessages(receiverid) {
                 axios.get('/private-message/' + receiverid).then(response => {
                     this.messages = response.data;
                 });
+				
 				this.activeid = receiverid;
+
             },
 			fetchUsers() {
                 axios.get('/users').then(response => {

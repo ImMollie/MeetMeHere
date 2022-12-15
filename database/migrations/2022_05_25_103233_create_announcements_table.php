@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('description');
             $table->integer('amountPeople');
+            $table->integer('currentPeople')->nullable();
             $table->string('place')->nullable();
             $table->date('date');
             $table->date('date2')->nullable();                                 

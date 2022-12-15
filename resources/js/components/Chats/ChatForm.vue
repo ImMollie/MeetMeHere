@@ -4,30 +4,39 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <div class="card" id="chat1" style="border-radius: 15px;">
-                        <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+                        <div class="card-header row justify-content-center align-items-center p-3 bg-info text-white border-bottom-0"
                             style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                            <i class="fas fa-angle-left"></i>
-                            <p class="mb-0 fw-bold">Chat to: {{this.activeid.nickname}}</p>
-                            <i class="fas fa-times"></i>
+                            <a class="fas fa-angle-left col-1" @click="redirect"></a>
+                            <p class="mb-0 fw-bold col text-center">Announcement of:<br> {{this.activeid.nickname}}</p>                                                       
                         </div>
                         <div class="card-body">
-                            <div v-for="message in messages">
-                                <div v-if="message.user.nickname == this.user.nickname" class="d-flex flex-row justify-content-end mb-4">
+                            <div>                                
+                                <div class="d-flex flex-row justify-content-start mb-4">
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                        alt="avatar 1" style="width: 45px; height: 100%;">
+                                    <div class="p-3 ms-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                                        <p class="small mb-0"> Let him know about your intenions, describe as many as you can.</p>
+                                    </div>                                    
+                                </div> 
+                                <div v-if="message">
+                                    <div class="d-flex flex-row justify-content-end mb-4">
                                         <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
-                                        <p class="small mb-0">{{ message.message }}</p>
+                                            <p class="small mb-0">{{ message }}</p>
                                         </div>
+                                        <img :src="'/storage/images/usersPhotos/'+user.photo"
+                                            alt="avatar 1" style="width: 45px; height: 100%;">
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-start mb-4">
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                        alt="avatar 1" style="width: 45px; height: 100%;">
-                                </div>   
-                                <div v-else class="d-flex flex-row justify-content-start mb-4">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                        alt="avatar 1" style="width: 45px; height: 100%;">
-                                        <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
-                                            <p class="small mb-0">{{ message.message }}</p>
-                                        </div>
+                                            alt="avatar 1" style="width: 45px; height: 100%;">
+                                    <div class="p-3 ms-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                                        <p class="small mb-0"> Creator of this announcement will decided if he wanna agree this.</p>
+                                    </div>                                    
+                                </div> 
                                 </div>
+                                
                             </div>  
-                            <div class="form-outline">
+                            <div v-if="!message" class="form-outline">
                                 <div class="input-group">
                                     <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." v-model="newMessage" @keyup.enter="sendMessage">
                                     <span class="input-group-btn">
@@ -36,6 +45,9 @@
                                         </button>
                                     </span>
                                 </div>
+                            </div>
+                            <div v-else class="form-outline px-3 py-3 justify-content-center d-flex" style="border-radius: 15px; background-color: #228B22; color: white;">
+                                <i class="fa-xl fa-solid fa-check"></i>
                             </div>
                         </div>
                     </div>
@@ -51,28 +63,23 @@
 
         data() {
             return {
-                newMessage: '',
-                messages: [],
+                newMessage: '',                
                 activeid: this.idrec,
+                message: '',
             }
         },
+        
 
-        mounted(){
-            this.fetchMessages();
-        },
-
-        methods: {
-            fetchMessages() {
-                axios.get('/private-message/' + this.activeid.id).then(response => {
-                    this.messages = response.data;
-                });
+        methods: {            
+            redirect(){
+                window.location.assign('http://localhost:8000/search_announcement');
             },
             sendMessage() {
-            axios.post('/private-message/' + this.activeid.id, {message: this.newMessage}).then(response => {
+            axios.post('/private-messagepoke/' + this.activeid.id, {message: this.newMessage}).then(response => {
+                this.message = this.newMessage;
                 this.newMessage = '';
                 //this.messages.push(response.data.message);
-                this.fetchMessages();
-                //asd
+                //this.fetchMessages();                
             });
         }
         }    

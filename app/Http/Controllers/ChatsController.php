@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Poke;
 use App\Models\User;
 use App\Models\Message;
 use App\Events\MessageSent;
@@ -20,7 +22,7 @@ class ChatsController extends Controller
  * @return \Illuminate\Http\Response
  */
     public function index($user){
-        $user = User::findorfail($user)->first();        
+        $user = User::where('id',$user)->first();              
         return view('chat', compact('user'));
     }
 
@@ -48,6 +50,12 @@ class ChatsController extends Controller
     //     return ['status' => 'Message Sent!'];
     // }
 
+    public function getPoke(User $user){        
+        $pokes = Poke::where([['userpoke_id',$user->id],['pokestatus_id',4]])->first();        
+        return $pokes;
+    }
+
+
     public function privateMessages(User $user){
         $temp = Message::with('user')
         ->where(['user_id' => Auth::user()->id, 'receiver_id' => $user->id])
@@ -57,8 +65,23 @@ class ChatsController extends Controller
         return $temp;
     }
 
-    
-    public function sendPrivateMessage(Request $request, User $user){
+    public function sendPrivateMessageWithPoke(Request $request, User $user){
+        $input = $request->all();
+        $input['receiver_id'] = $user->id;
+        $test = User::find(Auth::user()->id);
+        $message = $test->messages()->create($input); 
+        $poke = Poke::create([
+            'content' => $request->message,
+            'pokestatus_id' => 4,
+            'date' => Carbon::now()->format('Y-m-d'),
+            'userpoke_id' => $test->id,
+            'userpoked_id' => $user->id,
+        ]);
+        broadcast(new MessageSent($message->load('user')))->toOthers();
+        return response(['status' => 'Message Private with poke Sent!']);
+    }
+
+    public function sendPrivateMessage(Request $request, User $user){        
         $input = $request->all();
         $input['receiver_id'] = $user->id;
         $test = User::find(Auth::user()->id);

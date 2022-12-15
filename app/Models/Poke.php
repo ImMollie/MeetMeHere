@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Opinion;
+use App\Models\PokeStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,11 +17,7 @@ class Poke extends Model
      * @var string[]
      */
     
-    protected $fillable = [
-        'content',
-        'status',
-        'date',        
-    ];
+    protected $guarded = [];
 
     public function opinionPoke()
     {
@@ -33,5 +30,9 @@ class Poke extends Model
     public function pokedUser()
     {
         return $this->hasOne(User::class,'id','userpoked_id');        
+    }
+    public function pokeStatus()
+    {
+        return $this->hasOne(PokeStatus::class,'id','pokestatus_id');        
     }
 }

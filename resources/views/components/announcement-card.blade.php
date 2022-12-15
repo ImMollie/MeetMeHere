@@ -37,8 +37,12 @@
                 <span>Localization:</span>
                 <span class="dot"></span><span>{{ $announcement->place }}</span>
                 <div class="mt-1 mb-1 spec-1">
-                    <span>Amount of people needed:</span>
+                    <span>Amount of people needed:</span>    
+                    @if($announcement->currentPeople != null)                
+                    <span class="dot"></span><span>{{ $announcement->amountPeople - $announcement->currentPeople }}</span>
+                    @else
                     <span class="dot"></span><span>{{ $announcement->amountPeople }}</span>
+                    @endif
                 </div>
                 <p class="text-justify text-truncate para mb-0">
                     {{ $announcement->description }}<br><br></p>

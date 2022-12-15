@@ -31,17 +31,20 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/profileUpdate', [userProfileController::class,'profileUpdate'])->name('profileUpdate');
     Route::get('profile/{slug}', [userProfileController::class,'nicknameProfile'])->name('nicknameProfile');
     Route::get('search_announcement', [SearchAnnouncementController::class,'indexAnnouncement'])->name('searchAnnouncement');
+    
     Route::get('/chat/{user}', [ChatsController::class,'index'])->name('indexChat');
-
     Route::get('messages', [ChatsController::class,'fetchMessages'])->name('fetchMessages');
     Route::get('/currentUser', [ChatsController::class,'currentUser'])->name('currentUser');
     Route::post('messages', [ChatsController::class,'sendMessage'])->name('sendMessage');
     Route::get('/chat', [ChatRoomController::class,'index'])->name('chatRoom');
 
     Route::get('private-message/{user}', [ChatsController::class,'privateMessages'])->name('privateMessages');
+    Route::post('private-messagepoke/{user}', [ChatsController::class,'sendPrivateMessageWithPoke'])->name('sendPrivateMessageWithPoke');
     Route::post('private-message/{user}', [ChatsController::class,'sendPrivateMessage'])->name('sendPrivateMessage');
     Route::get('/users', [ChatRoomController::class,'users'])->name('users');
+    Route::get('/getpoke/{user}', [ChatsController::class,'getPoke'])->name('getPoke');
+    Route::get('/announcementYes/{poke}', [ChatRoomController::class,'currentUsers'])->name('currentUsers');
+    Route::get('/announcementNo/{poke}', [ChatRoomController::class,'currentUsers'])->name('currentUsers');
 
     // Route::get('filter', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
 });
-

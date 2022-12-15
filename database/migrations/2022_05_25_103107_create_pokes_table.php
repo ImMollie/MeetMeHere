@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('pokes', function (Blueprint $table) {
             $table->id();
             $table->string('content');
-            $table->string('status');
+            $table->unsignedBigInteger('pokestatus_id');
+            $table->foreign('pokestatus_id')
+            ->references('id')
+            ->on('poke_statuses');
             $table->date('date');                       
             $table->unsignedBigInteger('userpoke_id');
             $table->foreign('userpoke_id')
