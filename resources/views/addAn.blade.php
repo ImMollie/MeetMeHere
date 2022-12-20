@@ -28,8 +28,38 @@
                     <div class="formCard text-black" style="border-radius: 25px;">
                         <form method="POST" action="{{ route('store') }}">
                             @csrf
-                            <!-- Poczatek -->
+                            <!-- Początek ekranu powitalnego -->
                             <div class="card2 step1 show">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                        <div class="col">
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Help</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">How to create a good announcement?
+                                            </p>
+                                            <p class="text-center h4 mb-3 mx-1 mx-md-2 mt-1">Every detail is important! 
+                                                Example: Imagine having appointment with someone for a dog walking without mention that you have a Pitbull... <br>and someone came with York.<br>
+                                                That could end up horribly!<br>
+                                                The announcement must be well thought out and clear to avoid any misunderstandings.
+                                                On every step we give you freedom in choice and the results will be yours alone - remember about this when you will describe it on the last step.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="quiz_next">
+                                    <button class="quiz_continueBtn nextstep" type="button">Let's start!</button>
+                                </div>
+                            </div>
+                            <!-- Koniec ekranu powitalnego -->
+                            <!-- Poczatek ekranu 1 -->
+                            <div class="card2">
                                 <div class="card-header">
                                     <div class="row">
                                         <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
@@ -76,7 +106,7 @@
                                     <button class="quiz_continueBtn nextstep" type="button">Continue</button>
                                 </div>
                             </div>
-                            <!-- Koniec ekranu powitalnego -->
+                            <!-- Koniec ekranu 1 -->
 
                             <!-- Początek ekranu drugiego -->
                             <div class="card2">

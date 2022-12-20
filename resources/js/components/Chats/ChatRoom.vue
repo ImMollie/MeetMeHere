@@ -10,7 +10,7 @@
 		</div>		
 		<div id="contacts">
 			<ul>
-				<li v-for="receiver in users"  :key="receiver.id" @click="getPoke(receiver.id); fetchMessages(receiver.id); activeUser=receiver; " class="contact user-select-none" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
+				<li v-for="receiver in users"  :key="receiver.id" @click="fetchMessages(receiver.id,receiver);" class="contact user-select-none" :class="[ this.activeid == receiver.id ? 'active' : '' ]">
 					<div v-if="user.id != receiver.id" class="wrap">						
 						<img v-if="receiver.photo" :src="'/storage/images/usersPhotos/'+receiver.photo" alt="" />
 						<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
@@ -39,10 +39,10 @@
 				<img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" />
 				<p>{{activeUser.firstname}} {{activeUser.lastname}}</p>							
 			</div>
-			<div class="social-media">
-				<i class="fa-brands fa-facebook fa-xl" style="color:#1093f3"></i>
-                <i class="fa-brands fa-twitter fa-xl" style="color:#1093f3"></i>
-                <i class="fa-brands fa-instagram fa-xl" style="color:red"></i>
+			<div class="social-media" v-if="activeUser">
+				<i @click="socialLink(activeUser.facebook)" class="fa-brands fa-facebook fa-xl" style="color:#1093f3"></i>
+                <i @click="socialLink(activeUser.twitter)" class="fa-brands fa-twitter fa-xl" style="color:#1093f3"></i>
+                <i @click="socialLink(activeUser.instagram)" class="fa-brands fa-instagram fa-xl" style="color:red"></i>
 			</div>
 		</div>
 		<div class="messages">			
@@ -75,6 +75,8 @@
 </template>
 
 <script>
+import { throwStatement } from '@babel/types';
+
     export default {
         props: ['user'],
 
@@ -121,12 +123,13 @@
                 });
 				
 			},
-            fetchMessages(receiverid) {
+            fetchMessages(receiverid,receiver) {
                 axios.get('/private-message/' + receiverid).then(response => {
                     this.messages = response.data;
                 });
-				
-				this.activeid = receiverid;
+				this.getPoke(receiverid);
+				this.activeid = receiverid;	
+				this.activeUser = receiver;		
 
             },
 			fetchUsers() {
@@ -139,12 +142,15 @@
             	axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
                 this.newMessage = '';
                 //this.messages.push(response.data.message);
-                this.fetchMessages(this.activeid);
+                this.fetchMessages(this.activeid,this.activeUser);
 				setTimeout(this.scrollToEnd,100);
             });
         },
 		profileLink(slug){
 			window.location.href = "/profile/"+slug;
+		},
+		socialLink(link){
+			window.location.assign(link);
 		},
 		scrollToEnd(){
 			console.log($('.messages').offset());

@@ -33,9 +33,9 @@ class UsersSeeder extends Seeder
             'city' => 'Skalmierzyce',
             'street' => 'Kaliska',
             'number' => 20,
-            'facebook' => 'url/asdasda',
+            'facebook' => 'https://www.facebook.com/bartosz.danielak1/',
             'twitter' => 'url/asdasda',
-            'instagram' => 'url/asdasda',
+            'instagram' => 'https://www.instagram.com/bartosz_danielak/',
         ]);        
     }
 }

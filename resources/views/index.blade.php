@@ -99,12 +99,12 @@
             </div>
 
             <ul class="filters_menu">
-                <li class="active" data-filter="*">All</li>
-                <li data-filter=".Social">Social</li>
+                <li class="active" data-filter=".Social">Social</li>
+                <li data-filter=".Animals">Animals</li>
                 <li data-filter=".Sport">Sport</li>
-                <li data-filter=".Travels">Travels</li>
-                <li data-filter=".Others">Others</li>
-            </ul>
+                <li data-filter=".Travel">Travels</li>
+                <li data-filter="*">All</li>
+              </ul>
 
             <div class="filters-content">
                 <div class="row grid">
@@ -142,12 +142,9 @@
 
     <!-- about section -->
 
-    <section class="bg-img layout_padding mb-5" id="readmore">
-        <div class="container">
-            <div class="row text-align-center">
-                <div class="col-md">
-                </div>
-                <div class="col-md">
+    <section class="layout_padding mb-5 position-relative text-center" >
+        <img src="{{asset('/images/index/bg-img1.png')}}" class="rounded img-fluid" style="width: 100%;" alt="...">
+        <div class="container position-absolute" style="top: 50%; left:50%; transform: translate(-50%, -50%);">
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
@@ -164,12 +161,9 @@
                             the middle of text. All
                         </p>
                     </div>
+    </div>
                 </div>
-                <div class="col-md">
-                </div>
-            </div>
-        </div>
-    </section>
+</section>
 
     <!-- end about section -->
 
@@ -255,3 +249,33 @@
     </footer>
     <!-- footer section -->
 @endsection
+
+@push('scripts')
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(window).on('load', function () {
+        
+    $('.filters_menu li').click(function () {
+        $('.filters_menu li').removeClass('active');
+        $(this).addClass('active');
+        
+        var data = $(this).attr('data-filter');
+        $grid.isotope({
+            filter: data
+        })
+    });
+
+    var $grid = $(".grid").isotope({
+        filter: '.Social',
+        itemSelector: ".all",
+        percentPosition: false,
+        masonry: {
+            columnWidth: ".all"
+        }
+    })
+    
+});
+    });
+</script>
+@endpush
