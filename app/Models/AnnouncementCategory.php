@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class AnnouncementCategory extends Model
 {
     use HasFactory;
+    protected $guarded = [];
     public function announcementCategory()
     {
         return $this->hasMany(Announcement::class,'id','announcement_id');        

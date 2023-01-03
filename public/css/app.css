@@ -28276,6 +28276,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+}
+
 .navigation {
   width: 100%;
   border-bottom: 1px solid #b393d3;

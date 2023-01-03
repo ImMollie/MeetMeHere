@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<div class="messages">			
-			<div v-if="activeUser && poke.userpoked_id == user.id" class="system d-flex flex-row justify-content-center mb-4 user-select-none">				
+			<div v-if="activeUser && poke.userpoked_id == user.id && truefalse" class="system d-flex flex-row justify-content-center mb-4 user-select-none">				
                 <div class="system2 p-3 ms-3 w-25" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
                     <p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia?</p>
                     <div class="d-flex justify-content-between mt-2">
@@ -87,7 +87,8 @@ import { throwStatement } from '@babel/types';
 				users: [],
                 activeid: null,
 				activeUser: null,	
-				poke: '',			
+				poke: '',
+				truefalse: true,			
             }
         },
 
@@ -114,12 +115,14 @@ import { throwStatement } from '@babel/types';
 			announcementYes(){
 				axios.get('/announcementYes/' + this.poke.id).then(response => {
                     // window.location.href = "/search_announcement/";
+					this.truefalse = false;
                 });
 				
 			},
 			announcementNo(){
 				axios.get('/announcementNo/' + this.poke.id).then(response => {
                     // window.location.href = "/search_announcement/";
+					this.truefalse = false;
                 });
 				
 			},
@@ -152,8 +155,7 @@ import { throwStatement } from '@babel/types';
 		socialLink(link){
 			window.location.assign(link);
 		},
-		scrollToEnd(){
-			console.log($('.messages').offset());
+		scrollToEnd(){			
 			$('.messages').animate({ scrollTop: $('.messages').offset().top + $('#messages').height()}, 1000);
 		}
 

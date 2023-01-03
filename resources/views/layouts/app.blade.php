@@ -23,7 +23,8 @@
     <link href="{{ asset('css/chat.css') }}" rel="stylesheet">
     <link href="{{ asset('css/chatRoom.css') }}" rel="stylesheet">   
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">  
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/slider.css') }}" rel="stylesheet" />
 </head>
 
 <body>

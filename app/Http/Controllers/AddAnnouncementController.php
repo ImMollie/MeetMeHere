@@ -7,6 +7,7 @@ use Illuminate\Support\Arr;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\AnnouncementCategory;
 use Illuminate\Support\Facades\Auth;
 
 class AddAnnouncementController extends Controller
@@ -20,7 +21,7 @@ class AddAnnouncementController extends Controller
 
 
     public function store(Request $request)
-    {
+    {        
         $validatedData = $request->validate([
             'categoryCheck' => ['required', 'array'],
             'amountPeople' => 'required',    
@@ -37,21 +38,27 @@ class AddAnnouncementController extends Controller
              if(count($categories)>$counter){
                 $categoryName .= ",";
              }
-        };
-
+        };        
         
-        $userID = Auth::user();        
-         Announcement::create([
-            'status' => 'Active',
+        $userID = Auth::user();  
+        $announcement = Announcement::create([
+            'status_id' => 2,
             'category' => $categoryName,           
             'description' => $request->description,            
             'place' => $request->address,
             'amountPeople' => $request->amountPeople,
             'date' => $request->date,
             'date2' => $request->date2,
-            'user_id' => $userID->id,
+            'user_id' => $userID->id,                      
         ]);
-        return redirect('/data');
+
+        foreach($categories as $category){
+            AnnouncementCategory::create([            
+                'category_id' => $category->id,
+                'announcement_id' => $announcement->id,
+            ]);
+            }
+        return redirect('/searchAnnouncement');
     }
 }
 // $table->id();

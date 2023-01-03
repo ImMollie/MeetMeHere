@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->unsignedBigInteger('status_id');
+            $table->foreign('status_id')
+            ->references('id')
+            ->on('announcement_statuses');
             $table->string('category');
             $table->string('description');
             $table->integer('amountPeople');

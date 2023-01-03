@@ -12,7 +12,7 @@ class Announcement extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'status',
+        'status_id',
         'category',
         'description',
         'radius',
@@ -22,9 +22,18 @@ class Announcement extends Model
         'date',
         'date2',
         'type',    
-        'user_id',      
+        'user_id', 
     ];
-
+    public static function boot() {
+        parent::boot();
+        static::updated(function($item) {
+            if($item->amountPeople - $item->currentPeople == 0){
+                $item->status_id = 1;
+                $item->save();
+            }
+        });
+        }
+    
     public function categoryOfAnnouncement()
     {
         return $this->belongsTo(AnnouncementCategory::class,'id','announcement_id');        

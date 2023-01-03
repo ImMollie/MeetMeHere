@@ -14,7 +14,9 @@
                                     <li class="step0"></li>
                                     <li class="step0"></li>
                                     <li class="step0"></li>
+                                    <li class="step0"></li>
                                 </ul>
+                                <h6>Help</h6>
                                 <h6>Step 1</h6>
                                 <h6>Step 2</h6>
                                 <h6>Step 3</h6>
@@ -77,23 +79,21 @@
                                         @endphp
                                         @foreach ($categories as $type)
                                             @if ($type->categoryType != $lastType)
-                                                <div id="accordion">
-                                                    <button class="btn my-4 text-center box-shadow" style="width:100%" type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#collapse{{ $type->id }}" aria-expanded="false"
-                                                        aria-controls="collapse{{ $type->id }}">
-                                                        <h4>{{ $type->categoryType }}</h4>                                                  
+                                                <div class="accordion">
+                                                    <div class="accordion-item">
+                                                        <div class="accordion-header">
+                                                            <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                                data-bs-target="#collapse{{ $type->id }}" aria-expanded="false" aria-controls="collapse{{ $type->id }}"><h4>{{ $type->categoryType }}</h4> </a>
+                                                        </div>
+                                                    </div>                                                                                                         
+                                                    <div id="collapse{{ $type->id }}" class="collapse multi-collapse form-check">
                                                         @foreach ($categories->where('categoryType', $type->categoryType) as $category)
-                                                            <div id="collapse{{ $type->id }}"
-                                                                class="collapse multi-collapse form-check">
-                                                                <div class="card card-body">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        name="categoryCheck[]" id="{{ $category->id }}"
-                                                                        value="{{ $category->id }}" />{{ $category->categoryName }}
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    </button>
+                                                            <div class="form-group form-check pl-4">
+                                                                <input type="checkbox" class="form-check-input file_checkbox" name="categoryCheck[]" id="{{ $category->id }}" value="{{ $category->id }}">
+                                                                <label class="form-check-label"> {{ $category->categoryName }}</label>
+                                                            </div>  
+                                                        @endforeach                                                             
+                                                    </div>                                                                                                     
                                                 </div>
                                             @endif
                                             @php
@@ -131,7 +131,7 @@
                                                     <div class="single_quiz_card">
                                                         <div class="quiz_card_content">
                                                             <div class="quiz_card_icon">
-                                                                <img src="https://img.freepik.com/premium-vector/bearded-man-smiling-showing-thumbs-up-sign-guy-with-gesture-meaning-approval-okay-like_316839-1218.jpg?w=826" class="img-fluid" />
+                                                                <img src="https://img.freepik.com/premium-vector/bearded-man-smiling-showing-thumbs-up-sign-guy-with-gesture-meaning-approval-okay-like_316839-1218.jpg?w=826" class="img-fluid"/>
                                                             </div>
                                                             <div class="quiz_card_title">
                                                                 <h4>1</h4>
@@ -245,7 +245,6 @@
                                     <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">Choose localization</p>
                                     <div class="row">
                                         <div class="col" style="border-right: 5px dotted #bbb; border-radius:5px;">
-
                                             <div class="form-group">
                                                 <img src="https://img.freepik.com/free-vector/tiny-people-using-mobile-application-with-map-outdoors_74855-7881.jpg?w=1380&t=st=1665697832~exp=1665698432~hmac=809399f6cc1eaaa8f3c82f2a40e4627249dddf79eaf1ea3fabe27128796b9b35"
                                                     class="img-fluid" alt="Sample image">
@@ -312,17 +311,13 @@
                                                 this: XD</p>
                                         </div>
                                     </div>
-
                                     <div class="d-flex justify-content-center">
                                         <div class="p-3">
                                             <textarea id="address" class="form-control" name="description" placeholder="Describe it..." rows="13"
                                                 cols="45"></textarea>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                                 <div class="row justify-content-center mb-3">
                                     <button type="submit" class="quiz_continueBtn mt-5">Finish</button>
                                 </div>
@@ -345,7 +340,7 @@
                         </div>
 
                         <div class="modal-body">
-                            <div id="map"></div>
+                            <div id="map" style="height: 400px;"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info" data-bs-dismiss="modal"><i
@@ -360,6 +355,7 @@
 
 @push('scripts')
 <script>
+
     $(document).ready(function(){
 
 var step, nextstep, prevstep;

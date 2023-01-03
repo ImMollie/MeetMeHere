@@ -24,7 +24,7 @@
                         <a class="nav-link" href="#readmore">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="book.html">Book Table</a>
+                        <a class="nav-link" href="{{ route('myMeetings') }}">Meetings</a>
                     </li>
                 </ul>
                 <div class="user_option">

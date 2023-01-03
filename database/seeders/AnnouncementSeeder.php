@@ -8,6 +8,7 @@ use App\Models\Category;
 use Faker\Factory as Faker;
 use App\Models\Announcement;
 use Illuminate\Database\Seeder;
+use App\Models\AnnouncementStatus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -22,16 +23,10 @@ class AnnouncementSeeder extends Seeder
     {
         $this->faker = Faker::create();
         $generator = Factory::create();        
-        $status = [
-            1 => 'Arranged',            
-            2 => 'Expired',
-            3 => 'Canceled',
-            4 => 'Active',            
-        ];
-        foreach($status as $statuses) {            
+                    
             DB::table('announcements')->insert([
                 'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,  
-                'status' => $statuses,
+                'status_id' => AnnouncementStatus::all()->random()->id,
                 'category' => Category::all()->random()->categoryName,
                 'description' => $this->faker->text(10),                
                 'place' => $this->faker->text(10),
@@ -41,6 +36,6 @@ class AnnouncementSeeder extends Seeder
             ]);
         
         //Announcement::factory()->count(5)->create();        
-        }
+        
     }
 }

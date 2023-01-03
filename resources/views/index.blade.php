@@ -88,10 +88,15 @@
 
     <!-- end offer section -->
 
-    <!-- food section -->
+    <!-- categories section -->
 
     <section class="food_section layout_padding-bottom" id="categories">
         <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    The Newest Announcements<br>.<br>.
+                </h2>
+            </div>
             <div class="heading_container heading_center">
                 <h2>
                     Our Categories
@@ -104,7 +109,7 @@
                 <li data-filter=".Sport">Sport</li>
                 <li data-filter=".Travel">Travels</li>
                 <li data-filter="*">All</li>
-              </ul>
+            </ul>
 
             <div class="filters-content">
                 <div class="row grid">
@@ -138,7 +143,7 @@
         </div>
     </section>
 
-    <!-- end food section -->
+    <!-- end categories section -->
 
     <!-- about section -->
 

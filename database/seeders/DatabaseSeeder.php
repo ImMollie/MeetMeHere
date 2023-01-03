@@ -9,6 +9,7 @@ use Database\Seeders\OpinionSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\PokeStatusSeeder;
 use Database\Seeders\AnnouncementSeeder;
+use Database\Seeders\AnnouncementStatusSeeder;
 use Database\Seeders\AnnouncementCategorySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -24,12 +25,14 @@ class DatabaseSeeder extends Seeder
         //$this->call(RolesSeeder::class);
         //$this->call(PermissionsSeeder::class);
         $this->call(UsersSeeder::class); 
-        $this->call(CategorySeeder::class);       
+        $this->call(CategorySeeder::class);  
+        $this->call(AnnouncementStatusSeeder::class);      
         $this->call(AnnouncementSeeder::class); 
         $this->call(PokeStatusSeeder::class);            
         $this->call(PokeSeeder::class);
         $this->call(OpinionSeeder::class);        
         $this->call(AnnouncementCategorySeeder::class);     
+        
         
     }
 }

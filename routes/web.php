@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\ChatRoomController;
+use App\Http\Controllers\myMeetingsController;
 use App\Http\Controllers\userProfileController;
 use App\Http\Controllers\addAnnouncementController;
 use App\Http\Controllers\SearchAnnouncementController;
@@ -25,7 +26,13 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'verified'])->group(function (){
-    Route::get('add_announcement', [addAnnouncementController::class,'indexAnnouncement'])->name('indexAnnouncement');
+    Route::get('meetings', [myMeetingsController::class,'index'])->name('myMeetings');
+    Route::post('/filterMeetings', [myMeetingsController::class,'filterMeetings'])->name('filterMeetings');
+    Route::get('dismiss/{id}', [myMeetingsController::class,'dismiss'])->name('dismiss');
+    Route::get('cancel/{id}', [myMeetingsController::class,'cancel'])->name('cancel');
+    Route::get('refresh/{id}', [myMeetingsController::class,'refresh'])->name('refresh');
+
+    Route::get('add_announcement', [addAnnouncementController::class,'indexAnnouncement'])->name('indexAnnouncement');    
     Route::post('/store', [addAnnouncementController::class,'store'])->name('store');
     Route::get('profile', [userProfileController::class,'indexProfile'])->name('indexProfile');
     Route::post('/profileUpdate', [userProfileController::class,'profileUpdate'])->name('profileUpdate');
@@ -46,5 +53,6 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/announcementYes/{poke}', [ChatRoomController::class,'currentUsers'])->name('currentUsers');
     Route::get('/announcementNo/{poke}', [ChatRoomController::class,'currentUsers'])->name('currentUsers');
 
-    // Route::get('filter', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
+    Route::post('/filterCategory', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
+    
 });

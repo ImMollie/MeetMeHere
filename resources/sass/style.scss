@@ -516,15 +516,14 @@ a:focus {
   position: relative;
   margin-top: 25px;
   background-color: #ffffff;
-  border-radius: 10px;
   color: #ffffff;
-  border-radius: 80px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+  background: #222831;
+  border-radius: 80px;
 }
 
 .food_section .box .img-box {
-  background: #f1f2f3;
+  background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -535,14 +534,14 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   height: 215px;
-  border-radius: 0 0 0 45px;
+  border-radius: 46px 46px 46px 46px;
   margin: -1px;
   padding: 25px;
 }
 
 .food_section .box .img-box img {
-  max-width: 100%;
-  max-height: 145px;
+  max-width: 290px;
+  max-height: 170px;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
