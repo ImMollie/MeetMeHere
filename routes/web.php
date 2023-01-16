@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Message;
+use App\Events\MessageSent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -53,6 +55,12 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/announcementYes/{poke}', [ChatRoomController::class,'currentUsers'])->name('currentUsers');
     Route::get('/announcementNo/{poke}', [ChatRoomController::class,'currentUsers'])->name('currentUsers');
 
+    Route::post('/readNotification', [HomeController::class,'readNotification'])->name('readNotification');
+
     Route::post('/filterCategory', [SearchAnnouncementController::class,'filterAnnouncement'])->name('filterAnnouncement');
+    Route::get('/test', function(){        
+        event(new MessageSent(Message::where('receiver_id',4)->first()));
+        return 'asd';
+    });
     
 });

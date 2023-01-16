@@ -258,8 +258,7 @@ window.geocodePosition = function (pos) {
         }
         if(e.target.checked){
             storageClicks.push(e.target.value);
-            $.ajax({                
-                url:'/filterCategory',
+            $.ajax({  
                 type: 'POST',
                 url: '{{ route('filterAnnouncement') }}',                    
                 data: {
@@ -275,9 +274,8 @@ window.geocodePosition = function (pos) {
             })
         }else if (!e.target.checked){
             $.ajax({                
-                url:'/filterCategory',
                 type: 'POST',
-                url: '{{ route('filterAnnouncement') }}',                    
+                url: '{{ route('chatRoom') }}',                    
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     data: storageClicks,

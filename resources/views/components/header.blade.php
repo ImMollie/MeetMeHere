@@ -27,10 +27,47 @@
                         <a class="nav-link" href="{{ route('myMeetings') }}">Meetings</a>
                     </li>
                 </ul>
-                <div class="user_option">
-                    <a href="{{ route('indexProfile') }}" class="user_link">
-                        <i class="fa-solid fa-bell" aria-hidden="true"></i>
-                    </a>
+                <div class="user_option">                    
+                    <i class="position-relative notification-btn fa-solid fa-bell" style="color: white;">                        
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            9+
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </i>                    
+                    
+                    <!-- Notification dropdown -->
+                    <div class="navbar-nav dropdown">
+                        <div class="notification-dropdown collapse" aria-expanded="false">
+                            <div class="notBtn" href="#">   
+                                @auth                                   
+                                    <div class="box2">                                        
+                                        <div class="display">                                                
+                                            <div class="cont readNotification">
+                                                @foreach ($notification as $powiadomienia)
+                                                <input type="hidden" value="{{$powiadomienia->id}}" name="ids[]">
+                                                    @if($loop->iteration === 1)
+                                                        <i class="fa-regular fa-circle-check readedNotification" style="font-size: 15px"> Check as readed</i> 
+                                                    @endif                                                   
+                                                    <div class="profCont">
+                                                        @if($powiadomienia->user->photo != null)
+                                                            <img class="profile" src="/storage/images/usersPhotos+ {{$powiadomienia->user->photo}}">
+                                                        @else
+                                                            <img class="profile" src="/storage/images/usersPhotos/placeholder.png">
+                                                        @endif
+                                                    </div>           
+                                                                                        
+                                                    <div class="txt text-center m-2 " style="border: 1px solid; border-color: sandybrown; border-radius: 30px;">
+                                                        {{$powiadomienia->user->nickname}}
+                                                        <h6 class="text-center">Send you a message!</h6>                                                        
+                                                    </div> 
+                                                @endforeach                                        
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                @endauth                                                            
+                            </div>
+                        </div>
+                    </div>
                     <a href="{{ route('chatRoom') }}" class="user_link">
                         <i class="fa-solid fa-comments" aria-hidden="true"></i>
                     </a>
@@ -52,4 +89,48 @@
             </div>
         </nav>
     </div>
+
+@push('scripts')
+<script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).on('load', function () {               
+
+            $('.notification-btn').click(function() {            
+            $('.notification-dropdown').toggle();
+            $(this).toggleClass('active');
+        });
+
+        $('.readNotification').click(function(){
+            var element = $('.readedNotification');
+            element.removeClass("fa-regular");
+            element.addClass("fa-solid");  
+            var array = [];  
+            $('input[name^="ids"]').each(function(){
+                array.push($(this).val());
+            })
+            $.ajax({                
+                type: 'POST',
+                url: '{{ route('readNotification') }}',                    
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    data: array,
+                },                
+            }) 
+        });
+
+        
+
+
+        
+        window.Echo.private("privateChat.4").listen('MessageSent',function (e){
+            
+            console.log(e);
+            $('.notification').html(newNotification);
+        });
+
+        });
+    });
+    </script>
+@endpush
 </header>
