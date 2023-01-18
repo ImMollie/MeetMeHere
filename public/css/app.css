@@ -4886,7 +4886,7 @@ textarea.form-control-lg {
 .badge {
   display: inline-block;
   padding: 0.35em 0.65em;
-  font-size: 0.55em;
+  font-size: 0.57em;
   font-weight: 700;
   line-height: 1;
   color: #fff;
@@ -6784,7 +6784,7 @@ textarea.form-control-lg {
 }
 
 .translate-middle {
-  transform: translate(-50%, -80%) !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 .translate-middle-x {

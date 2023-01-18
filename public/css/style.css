@@ -188,6 +188,7 @@ a:focus {
 
 .user_option {
   display: flex;
+  min-width: 40%;
   align-items: center;
 }
 
@@ -389,6 +390,7 @@ a:focus {
 
 .offer_section .box .img-box img {
   width: 100%;
+  height: 100%;
   transition: all 0.2s;
 }
 

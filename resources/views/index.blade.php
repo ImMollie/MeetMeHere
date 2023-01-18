@@ -48,7 +48,7 @@
                     <div class="col-md-6  ">
                         <div class="box ">
                             <div class="img-box">
-                                <img src="images/index/search2.jpg" class="img-fluid" alt="">
+                                <img src="images/index/search3.jpg" alt="">
                             </div>
                             <div class="detail-box">
                                 <h3>

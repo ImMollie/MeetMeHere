@@ -56,16 +56,16 @@ h1 {
 
 .fa-regular {
   font-size: 25pt;
-  padding-bottom: 10px;
   color: black;
   font-size: 28px;
   margin-right: 10px;
   margin-left: 40px;
+  margin-top: 10px;
 }
 
 .box2 {
-  width: 400px;
-  height: 27vh;
+  width: 410px;
+  height: 30vh;
   border-radius: 10px;
   transition: 0.5s;
   position: absolute;
@@ -134,13 +134,12 @@ h1 {
   clip-path: circle(50% at 50% 50%);
   width: 75px;
   float: left;
-  padding-top: 10px;
 }
 
 .txt {
   vertical-align: top;
   font-size: 1.25rem;
-  padding: 5px 10px 0px 115px;
+  width: 374px;
 }
 
 .sub {

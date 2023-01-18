@@ -47,18 +47,23 @@
                                                 <input type="hidden" value="{{$powiadomienia->id}}" name="ids[]">
                                                     @if($loop->iteration === 1)
                                                         <i class="fa-regular fa-circle-check readedNotification" style="font-size: 15px"> Check as readed</i> 
-                                                    @endif                                                   
-                                                    <div class="profCont">
-                                                        @if($powiadomienia->user->photo != null)
-                                                            <img class="profile" src="/storage/images/usersPhotos+ {{$powiadomienia->user->photo}}">
-                                                        @else
-                                                            <img class="profile" src="/storage/images/usersPhotos/placeholder.png">
-                                                        @endif
-                                                    </div>           
-                                                                                        
-                                                    <div class="txt text-center m-2 " style="border: 1px solid; border-color: sandybrown; border-radius: 30px;">
-                                                        {{$powiadomienia->user->nickname}}
-                                                        <h6 class="text-center">Send you a message!</h6>                                                        
+                                                    @endif                              
+                                                    <div class="txt text-center m-2 justify-content-start d-flex pt-2 pb-2" style="border: 1px solid; border-color: sandybrown; border-radius: 30px;">
+                                                        <div class="profCont">
+                                                            @if($powiadomienia->user->photo != null)
+                                                                <img class="profile" src="/storage/images/usersPhotos+ {{$powiadomienia->user->photo}}">
+                                                            @else
+                                                                <img class="profile" src="/storage/images/usersPhotos/placeholder.png">
+                                                            @endif
+                                                        </div> 
+                                                        <div class="col">   
+                                                            <div class="row">
+                                                                <h4 class="text-center">{{$powiadomienia->user->nickname}}</h4>
+                                                            </div>                                                    
+                                                            <div class="row">                                                  
+                                                                <h6 class="text-center">Send you a message!</h6> 
+                                                            </div>
+                                                        </div>                                                       
                                                     </div> 
                                                 @endforeach                                        
                                             </div>                                                
