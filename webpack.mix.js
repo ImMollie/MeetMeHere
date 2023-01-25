@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+require('laravel-mix-compress');
 
 /*
  |--------------------------------------------------------------------------
@@ -22,5 +23,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/notification.scss', 'public/css')
     .copy(
         'node_modules/@fortawesome/fontawesome-free/webfonts',
-        'public/webfonts')
-    .sourceMaps();
+        'public/webfonts')    
+    .compress();

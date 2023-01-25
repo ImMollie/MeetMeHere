@@ -158,6 +158,19 @@ img {
     cursor: pointer;
 }
 
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.60em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+  }
+
 .main-body {
     padding: 15px;
 }
