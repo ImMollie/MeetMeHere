@@ -19,5 +19,5 @@
         </div>
     </div> --}}
 
-    <chat-form :idrec="{{$user}}" :user="{{ Auth::user() }}"></chat-form> 
+    <chat-form :idrec="{{$user}}" :user="{{ Auth::user() }}" :announcement="{{$announcement}}"></chat-form> 
 @endsection

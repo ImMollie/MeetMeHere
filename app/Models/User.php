@@ -80,6 +80,6 @@ class User extends Authenticatable
 
     public function announcementCreator()
     {
-        return $this->hasOne(Announcement::class,'user_id','id');        
+        return $this->hasMany(Announcement::class,'user_id','id');        
     }
 }

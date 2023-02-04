@@ -7,6 +7,7 @@ use App\Models\Poke;
 use App\Models\User;
 use App\Models\Message;
 use App\Events\MessageSent;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +22,11 @@ class ChatsController extends Controller
  *
  * @return \Illuminate\Http\Response
  */
-    public function index($user){
-        $user = User::where('id',$user)->first();              
-        return view('chat', compact('user'));
+    public function index(User $user, Announcement $announcement){
+        return view('chat', [
+            'user' => $user,
+            'announcement' => $announcement
+        ]);
     }
 
 /**
@@ -51,7 +54,8 @@ class ChatsController extends Controller
     // }
 
     public function getPoke(User $user){        
-        $pokes = Poke::where([['userpoke_id',$user->id],['pokestatus_id',4]])->first();        
+        $pokes = Poke::where([['userpoke_id',$user->id],['pokestatus_id',4]])->first(); 
+        $pokes['announcementcat'] = __($pokes->getAnnouncement->category);   
         return $pokes;
     }
 
@@ -65,10 +69,11 @@ class ChatsController extends Controller
         return $temp;
     }
 
-    public function sendPrivateMessageWithPoke(Request $request, User $user){
-        $input = $request->all();
+    public function sendPrivateMessageWithPoke(Request $request, User $user){     
+                                                                        
+        $input = $request->except('announcement');
         $input['receiver_id'] = $user->id;
-        $test = User::find(Auth::user()->id);
+        $test = User::find(Auth::user()->id);        
         $message = $test->messages()->create($input); 
         $poke = Poke::create([
             'content' => $request->message,
@@ -76,7 +81,9 @@ class ChatsController extends Controller
             'date' => Carbon::now()->format('Y-m-d'),
             'userpoke_id' => $test->id,
             'userpoked_id' => $user->id,
+            'announcement_id' => $request->announcement,
         ]);
+
         broadcast(new MessageSent($message->load('user')))->toOthers();
         return response(['status' => 'Message Private with poke Sent!']);
     }

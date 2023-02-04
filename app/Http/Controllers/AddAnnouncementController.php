@@ -58,7 +58,7 @@ class AddAnnouncementController extends Controller
                 'announcement_id' => $announcement->id,
             ]);
             }
-        return redirect('/searchAnnouncement');
+        return redirect('/search_announcement');
     }
 }
 // $table->id();

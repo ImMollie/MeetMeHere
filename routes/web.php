@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('profile/{slug}', [userProfileController::class,'nicknameProfile'])->name('nicknameProfile');
     Route::get('search_announcement', [SearchAnnouncementController::class,'indexAnnouncement'])->name('searchAnnouncement');
     
-    Route::get('/chat/{user}', [ChatsController::class,'index'])->name('indexChat');
+    Route::get('/chat/{user}/{announcement}', [ChatsController::class,'index'])->name('indexChat');    
     Route::get('messages', [ChatsController::class,'fetchMessages'])->name('fetchMessages');
     Route::get('/currentUser', [ChatsController::class,'currentUser'])->name('currentUser');
     Route::post('messages', [ChatsController::class,'sendMessage'])->name('sendMessage');

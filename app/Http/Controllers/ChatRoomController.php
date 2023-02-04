@@ -47,7 +47,7 @@ class ChatRoomController extends Controller
             
         $poke->pokestatus_id = 3;
         $poke->save();
-        $tmp = $poke->pokedUser->announcementCreator;
+        $tmp = $poke->getAnnouncement;
         $tmp->update([
             'currentPeople' => $tmp->currentPeople+1,
         ]);

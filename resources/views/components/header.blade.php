@@ -14,17 +14,18 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto ">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item {{ request()->routeIs('home') ? "active" : "" }}">
+                        <a class="nav-link" href="{{ route('home') }}">{{__('translation.index.header.home')}} <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}/#categories">Categories</a>
+                        <a class="nav-link" href="{{ route('home') }}/#categories">{{__('translation.index.header.categories')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#readmore">About</a>
+                        <a class="nav-link" href="{{ route('home') }}/#readmore">{{__('translation.index.header.about')}}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('myMeetings') }}">Meetings</a>
+                    
+                    <li class="nav-item {{ request()->routeIs('myMeetings') ? "active" : "" }}">
+                        <a class="nav-link" href="{{ route('myMeetings') }}">{{__('translation.index.header.meetings')}}</a>
                     </li>
                 </ul>
                 <div class="user_option">                    
@@ -86,11 +87,11 @@
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <a class="login_button" href=""
-                                onclick='this.parentNode.submit(); return false;'>Logout</a>
+                                onclick='this.parentNode.submit(); return false;'>{{__('translation.index.buttons.logout')}}</a>
                         </form>
                     @else
-                        <a class="login_button" href="{{ route('login') }}">Login</a>
-                        <a class="login_button" href="{{ route('register') }}">Sign up</a>
+                        <a class="login_button" href="{{ route('login') }}">{{__('translation.index.buttons.login')}}</a>
+                        <a class="login_button" href="{{ route('register') }}">{{__('translation.index.buttons.register')}}</a>
                     @endauth
                 </div>
             </div>

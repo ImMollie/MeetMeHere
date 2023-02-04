@@ -28,7 +28,7 @@ class PokeSeeder extends Seeder
         'pokestatus_id' => PokeStatus::all()->random()->id,
         'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         'userpoke_id' => User::select('id')->orderByRaw("RAND()")->first()->id,  
-        'userpoked_id' => User::select('id')->orderByRaw("RAND()")->first()->id,
+        'userpoked_id' => User::select('id')->orderByRaw("RAND()")->first()->id,        
         'created_at' => $generator->dateTime(),
         'updated_at' => $generator->dateTime(),
         ]);

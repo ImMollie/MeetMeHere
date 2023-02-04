@@ -16,11 +16,11 @@
                                     <li class="step0"></li>
                                     <li class="step0"></li>
                                 </ul>
-                                <h6>Help</h6>
-                                <h6>Step 1</h6>
-                                <h6>Step 2</h6>
-                                <h6>Step 3</h6>
-                                <h6>Step 4</h6>
+                                <h6>{{__('translation.addAnnouncement.help')}}</h6>
+                                <h6>{{__('translation.addAnnouncement.step1')}}</h6>
+                                <h6>{{__('translation.addAnnouncement.step2')}}</h6>
+                                <h6>{{__('translation.addAnnouncement.step3')}}</h6>
+                                <h6>{{__('translation.addAnnouncement.step4')}}</h6>
                             </div>
                         </div>
                     </div>
@@ -34,29 +34,23 @@
                             <div class="card2 step1 show">
                                 <div class="card-header">
                                     <div class="row">
-                                        <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                        <p class="fas fa-arrow-left prevstep"><span>{{__('translation.addAnnouncement.buttons.prev')}}</span></p>
                                         <div class="col">
-                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Help</p>
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.help')}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body p-md-4">
                                     <div class="row justify-content-center">
                                         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">How to create a good announcement?
-                                            </p>
-                                            <p class="text-center h4 mb-3 mx-1 mx-md-2 mt-1">Every detail is important! 
-                                                Example: Imagine having appointment with someone for a dog walking without mention that you have a Pitbull... <br>and someone came with York.<br>
-                                                That could end up horribly!<br>
-                                                The announcement must be well thought out and clear to avoid any misunderstandings.
-                                                On every step we give you freedom in choice and the results will be yours alone - remember about this when you will describe it on the last step.
-                                            </p>
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.start_title')}}</p>
+                                            <p class="text-center h4 mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.start_desc')}}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="quiz_next">
-                                    <button class="quiz_continueBtn nextstep" type="button">Let's start!</button>
+                                    <button class="quiz_continueBtn nextstep" type="button">{{__('translation.addAnnouncement.buttons.letsstart')}}</button>
                                 </div>
                             </div>
                             <!-- Koniec ekranu powitalnego -->
@@ -64,15 +58,15 @@
                             <div class="card2">
                                 <div class="card-header">
                                     <div class="row">
-                                        <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                        <p class="fas fa-arrow-left prevstep"><span>{{__('translation.addAnnouncement.buttons.prev')}}</span></p>
                                         <div class="col">
-                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Step 1</p>
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.step1')}}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="card-body p-md-4">
-                                    <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">Choose category</p>
+                                    <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.category')}}</p>
                                     <div class="container">
                                         @php
                                             $lastType = '';
@@ -90,7 +84,7 @@
                                                         @foreach ($categories->where('categoryType', $type->categoryType) as $category)
                                                             <div class="form-group form-check pl-4">
                                                                 <input type="checkbox" class="form-check-input file_checkbox" name="categoryCheck[]" id="{{ $category->id }}" value="{{ $category->id }}">
-                                                                <label class="form-check-label"> {{ $category->categoryName }}</label>
+                                                                <label class="form-check-label"> {{ __($category->categoryName) }}</label>
                                                             </div>  
                                                         @endforeach                                                             
                                                     </div>                                                                                                     
@@ -103,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="quiz_next">
-                                    <button class="quiz_continueBtn nextstep" type="button">Continue</button>
+                                    <button class="quiz_continueBtn nextstep" type="button">{{__('translation.addAnnouncement.buttons.next')}}</button>
                                 </div>
                             </div>
                             <!-- Koniec ekranu 1 -->
@@ -112,16 +106,15 @@
                             <div class="card2">
                                 <div class="card-header">
                                     <div class="row">
-                                        <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                        <p class="fas fa-arrow-left prevstep"><span>{{__('translation.addAnnouncement.buttons.prev')}}</span></p>
                                         <div class="col">
-                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Step 2</p>
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.step2')}}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="card-body p-md-4">
-                                    <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">Amount of people you want to
-                                        envolved</p>
+                                    <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.amount')}}</p>
                                     <div class="container">
                                         <div class="row">
                                             <div class="col">
@@ -191,7 +184,7 @@
                                                             </div>
 
                                                             <div class="quiz_card_title">
-                                                                <h4>>More than 3</h4>
+                                                                <h4>{{__('translation.addAnnouncement.more')}}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -213,7 +206,7 @@
                                                             </div>
 
                                                             <div class="quiz_card_title">
-                                                                <h4>>Any</h4>
+                                                                <h4>{{__('translation.addAnnouncement.any')}}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -223,7 +216,7 @@
                                     </div>
                                 </div>
                                 <div class="quiz_next">
-                                    <button class="quiz_continueBtn nextstep" type="button">Continue</button>
+                                    <button class="quiz_continueBtn nextstep" type="button">{{__('translation.addAnnouncement.buttons.next')}}</button>
                                 </div>
 
                             </div>
@@ -233,16 +226,16 @@
                             <div class="card2">
                                 <div class="card-header">
                                     <div class="row">
-                                        <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                        <p class="fas fa-arrow-left prevstep"><span>{{__('translation.addAnnouncement.buttons.prev')}}</span></p>
                                         <div class="col">
-                                            <p class="text-center h2 fw-bold mb-2 mx-1 mx-md-2 mt-1">Step 3</p>
+                                            <p class="text-center h2 fw-bold mb-2 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.step3')}}</p>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="card-body p-md-4">
-                                    <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">Choose localization</p>
+                                    <p class="text-center h3 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.localization')}}</p>
                                     <div class="row">
                                         <div class="col" style="border-right: 5px dotted #bbb; border-radius:5px;">
                                             <div class="form-group">
@@ -254,7 +247,7 @@
                                             <div class="form-group mb-3">
                                                 <input type="hidden" id="latitude" name="latitude">
                                                 <input type="hidden" id="longitude" name="longitude">
-                                                <input class="quiz_localization" type="button" value="Choose Location"
+                                                <input class="quiz_localization" type="button" value="{{__('translation.addAnnouncement.buttons.localization')}}"
                                                     onclick="Modal()">
                                             </div>
                                         </div>
@@ -262,7 +255,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label class="form-check-label" for="date1">Date since</label>
+                                                        <label class="form-check-label" for="date1">{{__('translation.addAnnouncement.date1')}}</label>
                                                         <input type="date" id="date1" class="form-control"
                                                             min="{{ date('Y-m-d') }}" name="date">
                                                         <img
@@ -270,13 +263,12 @@
                                                         <div class="form-check">
                                                             <input class="form-check-input" name="oneDay" id="oneDay"
                                                                 type="checkbox" onchange="dateDisabled()">
-                                                            <label class="form-check-label" for="oneDay">This day
-                                                                only</label>
+                                                            <label class="form-check-label" for="oneDay">{{__('translation.addAnnouncement.thisday')}}</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col">
-                                                    <label class="form-check-label" for="date2">Date for</label>
+                                                    <label class="form-check-label" for="date2">{{__('translation.addAnnouncement.date2')}}</label>
                                                     <input type="date" id="date2" class="form-control oneDay"
                                                         min="{{ date('Y-m-d') }}" name="date2">
                                                     <img
@@ -287,7 +279,7 @@
                                     </div>
                                 </div>
                                 <div class="quiz_next">
-                                    <button class="quiz_continueBtn nextstep" type="button">Continue</button>
+                                    <button class="quiz_continueBtn nextstep" type="button">{{__('translation.addAnnouncement.buttons.next')}}</button>
                                 </div>
                             </div>
                             <!-- Koniec ekranu trzeciego -->
@@ -296,19 +288,16 @@
                             <div class="card2">
                                 <div class="card-header">
                                     <div class="row">
-                                        <p class="fas fa-arrow-left prevstep"><span>Return</span></p>
+                                        <p class="fas fa-arrow-left prevstep"><span>{{__('translation.addAnnouncement.buttons.prev')}}</span></p>
                                         <div class="col">
-                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Step 4</p>
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.step4')}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body p-md-4">
                                     <div class="row justify-content-center">
                                         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">Describe your meeting!
-                                            </p>
-                                            <p class="text-center h4 mb-3 mx-1 mx-md-2 mt-1">Again remember about this: and
-                                                this: XD</p>
+                                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-2 mt-1">{{__('translation.addAnnouncement.finish_desc')}}</p>                                            
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center">
@@ -319,7 +308,7 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mb-3">
-                                    <button type="submit" class="quiz_continueBtn mt-5">Finish</button>
+                                    <button type="submit" class="quiz_continueBtn mt-5">{{__('translation.addAnnouncement.buttons.finish')}}</button>
                                 </div>
                             </div>
                             <!-- Koniec ekranu czwartego -->
@@ -333,7 +322,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title" id="address-label">Choose Location</h5>
+                            <h5 class="modal-title" id="address-label">{{__('translation.addAnnouncement.buttons.localization')}}</h5>
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times</span>
                             </button>

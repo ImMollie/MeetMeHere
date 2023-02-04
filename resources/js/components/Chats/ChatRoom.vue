@@ -48,7 +48,7 @@
 		<div class="messages">			
 			<div v-if="activeUser && poke.userpoked_id == user.id && truefalse" class="system d-flex flex-row justify-content-center mb-4 user-select-none">				
                 <div class="system2 p-3 ms-3 w-25" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
-                    <p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia?</p>
+                    <p class="big mb-0 text-wrap ">Czy chcesz zatwierdzic użytkownika <span class="fw-bold">{{activeUser.firstname}} {{activeUser.lastname}}</span> z ogłoszenia o kategorii: <span class="fw-bold">{{poke.announcementcat}}</span>?</p>
                     <div class="d-flex justify-content-between mt-2">
                         <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;" @click="announcementYes()">Tak</button>
                         <button type="button" class="btn btn-primary" style="background: #435f7a; border-color: #435f7a;" @click="announcementNo()">Nie</button>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Opinion;
 use App\Models\PokeStatus;
+use App\Models\Announcement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -30,6 +31,10 @@ class Poke extends Model
     public function pokedUser()
     {
         return $this->hasOne(User::class,'id','userpoked_id');        
+    }
+    public function getAnnouncement()
+    {
+        return $this->hasOne(Announcement::class,'id','announcement_id');        
     }
     public function pokeStatus()
     {

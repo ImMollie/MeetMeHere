@@ -482,8 +482,13 @@ a:focus {
   transition: all 0.2s;
 }
 
+.food_section .box .detail-box2 {
+  padding: 25px;
+}
+
 .food_section .box .detail-box {
   padding: 25px;
+  max-height: 150px;
 }
 
 .food_section .box .detail-box h5 {

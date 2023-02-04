@@ -17,14 +17,14 @@
                                 <div class="col-md-7 col-lg-6 ">
                                     <div class="detail-box">
                                         <h1>
-                                            Web application supporting the organization of group activities
+                                            {{__('translation.index.title')}}
                                         </h1>
                                         {{-- <p>                    
                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
                    </p> --}}
                                         <div class="btn-box">
                                             <a href="#readmore" class="btn1">
-                                                Read about it
+                                                {{__('translation.index.buttons.read')}}
                                             </a>
                                         </div>
                                     </div>
@@ -52,13 +52,13 @@
                             </div>
                             <div class="detail-box">
                                 <h3>
-                                    Search
+                                    {{__('translation.index.search')}}
                                 </h3>
                                 <h6>
-                                    Find announcement you are looking for
+                                    {{__('translation.index.search2')}}
                                 </h6>
                                 <a class="login_button" href="{{ route('searchAnnouncement') }}">
-                                    Click here!
+                                    {{__('translation.index.buttons.click')}}
                                 </a>
                             </div>
                         </div>
@@ -70,13 +70,13 @@
                             </div>
                             <div class="detail-box">
                                 <h3>
-                                    Add
+                                    {{__('translation.index.add')}}
                                 </h3>
                                 <h6>
-                                    Add your own announcement
+                                    {{__('translation.index.add2')}}
                                 </h6>
                                 <a class="login_button" href="{{ route('indexAnnouncement') }}">
-                                    Click here!
+                                    {{__('translation.index.buttons.click')}}
                                 </a>
                             </div>
                         </div>
@@ -94,21 +94,21 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    The Newest Announcements<br>.<br>.
+                    {{__('translation.index.lastannouncements')}}<br>.<br>.
                 </h2>
             </div>
             <div class="heading_container heading_center">
                 <h2>
-                    Our Categories
+                    {{__('translation.index.categories')}}
                 </h2>
             </div>
 
             <ul class="filters_menu">
-                <li class="active" data-filter=".Social">Social</li>
-                <li data-filter=".Animals">Animals</li>
-                <li data-filter=".Sport">Sport</li>
-                <li data-filter=".Travel">Travels</li>
-                <li data-filter="*">All</li>
+                <li class="active" data-filter=".Social">{{__('translation.index.social')}}</li>
+                <li data-filter=".Animals">{{__('translation.index.animals')}}</li>
+                <li data-filter=".Sport">{{__('translation.index.sport')}}</li>
+                <li data-filter=".Travel">{{__('translation.index.travells')}}</li>
+                <li data-filter="*">{{__('translation.index.all')}}</li>
             </ul>
 
             <div class="filters-content">
@@ -121,25 +121,19 @@
                                         <img src="{{ asset($category->categoryIMG) }}" alt="">
                                     </div>
                                     <div class="detail-box">
-                                        <h5>
-                                            {{ $category->categoryName }}
-                                        </h5>
-                                        <p>
-                                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam
-                                            voluptatem repellendus sed eaque
-                                        </p>
+                                        <h4 class="text-center">
+                                            {{ __($category->categoryName) }}
+                                        </h4>
+                                        <h6 class="detail-box text-center">
+                                            {{ __($category->categoryDesc) }}
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
-            </div>
-            <div class="btn-box">
-                <a href="">
-                    View More
-                </a>
-            </div>
+            </div>            
         </div>
     </section>
 
@@ -147,13 +141,13 @@
 
     <!-- about section -->
 
-    <section class="layout_padding mb-5 position-relative text-center" >
+    <section class="layout_padding mb-5 position-relative text-center" id="readmore" >
         <img src="{{asset('/images/index/bg-img1.png')}}" class="rounded img-fluid" style="width: 100%;" alt="...">
         <div class="container position-absolute" style="top: 50%; left:50%; transform: translate(-50%, -50%);">
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
-                                We Are People
+                                {{__('translation.index.wearepeople')}}
                             </h2>
                         </div>
                         <p>

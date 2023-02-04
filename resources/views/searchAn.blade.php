@@ -21,7 +21,7 @@
                             <div class="accordion-item">
                                 <div class="accordion-header">
                                     <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Categories</a>
+                                        data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">{{__('translation.searchAnnouncement.buttons.categories')}}</a>
                                 </div>
                             </div>
                             <div id="collapse1" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
@@ -29,7 +29,7 @@
                                 @foreach ($categories as $category)
                                 <div class="form-group form-check pl-4">
                                     <input type="checkbox" class="form-check-input all_checkbox" value="{{ $category->id }}">
-                                    <label class="form-check-label"> {{ $category->categoryName }}</label>
+                                    <label class="form-check-label"> {{ __($category->categoryName) }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -40,7 +40,7 @@
                         <div class="accordion-item">
                             <div class="accordion-header" id="heading6">
                                 <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">Amount of people</a>
+                                    data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">{{__('translation.searchAnnouncement.buttons.amount')}}</a>
                             </div>
                         </div>
                         <div id="collapse2" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group form-check pl-4">
                                 <input type="checkbox" class="form-check-input file_checkbox" value="all">
-                                <label class="form-check-label"> 3 or more</label>
+                                <label class="form-check-label"> {{__('translation.addAnnouncement.more')}}</label>
                             </div>
                         </div>                        
                     </div>
@@ -64,14 +64,14 @@
                         <div class="accordion-item">
                             <div class="accordion-header" id="heading6">
                                 <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse2">Place</a>
+                                    data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse2">{{__('translation.searchAnnouncement.buttons.place')}}</a>
                             </div>
                         </div>
                         <div id="collapse3" class="accordion-collapse collapse ml-4"
                                 aria-labelledby="heading6" data-bs-parent="#accordionExample">
                             <div class="filter-content" id="collapse_aside2" style="">
                                 <div class="card-body">
-                                    <label style="font-size: 12px;">kilometers from your current location</label>
+                                    <label style="font-size: 12px;">{{__('translation.searchAnnouncement.kilometers')}}</label>
                                     <div class="range-slider">
                                         <input class="range-slider__range" type="range" value="0" min="0" max="100">
                                         <span class="range-slider__value">0</span>
@@ -86,14 +86,14 @@
                                 <div class="form-group mb-3">
                                     <input type="hidden" id="latitude" name="latitude">
                                     <input type="hidden" id="longitude" name="longitude">
-                                    <input class="quiz_localization" type="button" value="Choose Location" onclick="Modal()">
+                                    <input class="quiz_localization" type="button" value="{{__('translation.addAnnouncement.buttons.localization')}}" onclick="Modal()">
                                 </div>
                                 <div class="modal fade" id="location-modal" tab-index="-1" role="dialog"
                                     aria-labelled="location-modal" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-info text-white">
-                                                <h5 class="modal-title" id="address-label">Choose Location</h5>
+                                                <h5 class="modal-title" id="address-label">{{__('translation.addAnnouncement.buttons.localization')}}</h5>
                                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times</span>
                                                 </button>
@@ -115,7 +115,7 @@
                         <div class="accordion-item">
                             <div class="accordion-header" id="heading6">
                                 <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse2">Date</a>
+                                    data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse2">{{__('translation.searchAnnouncement.buttons.date')}}</a>
                             </div>
                         </div>
                         <div id="collapse4" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
@@ -123,18 +123,18 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="form-check-label" for="date1">Date since</label>
+                                        <label class="form-check-label" for="date1">{{__('translation.addAnnouncement.date1')}}</label>
                                         <input type="date" id="date1" class="form-control" min="{{ date('Y-m-d') }}"
                                             name="date">
                                         <div class="form-check">
                                             <input class="form-check-input" name="oneDay" id="oneDay" type="checkbox"
                                                 onchange="dateDisabled()">
-                                            <label class="form-check-label" for="oneDay">This day only</label>
+                                            <label class="form-check-label" for="oneDay">{{__('translation.addAnnouncement.thisday')}}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <label class="form-check-label" for="date2">Date for</label>
+                                    <label class="form-check-label" for="date2">{{__('translation.addAnnouncement.date2')}}</label>
                                     <input type="date" id="date2" class="form-control oneDay" min="{{ date('Y-m-d') }}"
                                         name="date2">
                                 </div>

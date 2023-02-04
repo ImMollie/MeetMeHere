@@ -20,6 +20,10 @@ return new class extends Migration
             $table->foreign('pokestatus_id')
             ->references('id')
             ->on('poke_statuses');
+            $table->unsignedBigInteger('announcement_id');
+            $table->foreign('announcement_id')
+            ->references('id')
+            ->on('announcements');
             $table->date('date');                       
             $table->unsignedBigInteger('userpoke_id');
             $table->foreign('userpoke_id')

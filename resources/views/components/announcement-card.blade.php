@@ -2,25 +2,25 @@
 <div class="row text-center">
     <div>
         @if( !is_array($announcements))
-            <h3 class="mt-0 mb-5">Announcements<br> Showing: <span class="text-primary">{{ $announcements->count() }}</span> </h3>
+            <h3 class="mt-0 mb-3">{{__('translation.searchAnnouncement.announcements')}}</h3><h5>{{__('translation.searchAnnouncement.showing')}} <span class="text-primary">{{ $announcements->count() }}</span></h5>
             @else
-            <h3 class="mt-0 mb-5">Announcements<br> Showing: <span class="text-primary">{{ count($announcements) }}</span> </h3>
+            <h3 class="mt-0 mb-3">{{__('translation.searchAnnouncement.announcements')}}</h3><h5>{{__('translation.searchAnnouncement.showing')}} <span class="text-primary">{{ count($announcements) }}</span></h5>
         @endif
     </div>
 </div>
 @foreach ($announcements as $announcement)
     <div class="col-sm-6 col-lg-5 m-2 box"> 
-        <div class="d-flex flex-column mt-1 text-center detail-box">
+        <div class="d-flex flex-column mt-1 text-center detail-box2">
             <h5>
                 @foreach ($announcement->categoryOfAnnouncement2 as $item)
-                    {{ $item->categoryAnnouncement->categoryName }}
+                    {{ __($item->categoryAnnouncement->categoryName) }}
                 @endforeach
             </h5>
             <div class="mt-1 mb-1 text-center">
                 <span>Localization:</span>
                 <span class="dot"></span><span>{{ $announcement->place }}</span>
                 <div class="mt-1 mb-3 ">
-                    <span>Amount of people needed:</span>
+                    <span>{{__('translation.searchAnnouncement.amount')}}</span>
                     @if ($announcement->currentPeople != null)
                         <span
                             class="dot"></span><span>{{ $announcement->amountPeople - $announcement->currentPeople }}</span>
@@ -50,7 +50,7 @@
                 @if($creatordetails)
                 <div class="d-flex justify-content-center mt-2 mb-2">
                     <a class="btn btn-primary btn-sm" style="background-color: #ffbe33; border-color: black; color: black;" href="{{ route('nicknameProfile', ['slug' => $announcement->userAnnouncement->slug]) }}">
-                        Creator Details</a>
+                        {{__('translation.searchAnnouncement.buttons.creator')}}</a>
                 </div>
                 @endif
                 <p class="text-justify text-wrap para mb-0">
@@ -64,7 +64,7 @@
             </div>
             @if($poke)
             <div class="user_option justify-content-center mt-auto">
-                <a class="login_button mt-auto" style="color: black;" href="{{ route('indexChat', ['user' => $announcement->userAnnouncement]) }}">Poke</a>
+                <a class="login_button mt-auto" style="color: black;" href="{{ route('indexChat', ['user' => $announcement->userAnnouncement, 'announcement' => $announcement->id]) }}">Poke</a>
             </div>
             @endif
             @if($dismiss)

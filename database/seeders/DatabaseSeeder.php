@@ -27,11 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class); 
         $this->call(CategorySeeder::class);  
         $this->call(AnnouncementStatusSeeder::class);      
-        $this->call(AnnouncementSeeder::class); 
-        $this->call(PokeStatusSeeder::class);            
-        $this->call(PokeSeeder::class);
-        $this->call(OpinionSeeder::class);        
-        $this->call(AnnouncementCategorySeeder::class);     
+        // $this->call(AnnouncementSeeder::class); 
+        $this->call(PokeStatusSeeder::class);  
+        // $this->call(AnnouncementCategorySeeder::class);     
         
         
     }

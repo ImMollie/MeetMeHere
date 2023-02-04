@@ -19,36 +19,36 @@ class CategorySeeder extends Seeder
     {        
         $generator = Factory::create();
         $categories = [
-            1 => 'Walking the dog',
-            2 => 'Horse riding',
-            3 => 'Fishing',
+            1 => 'translation.categories.name.dog',
+            2 => 'translation.categories.name.horse',
+            3 => 'translation.categories.name.fish',
 
-            4 => 'Pub meeting',
-            5 => 'Watching a sports match',
-            6 => 'Dancing',
-            7 => 'Theater',
-            8 => 'Walk',
-            9 => 'Night ride',
-            10 => 'Cinema',
-            11 => 'Movie',
-            12 => 'Date',
-            13 => 'Cooking',
+            4 => 'translation.categories.name.beer',
+            5 => 'translation.categories.name.match',
+            6 => 'translation.categories.name.dancing',
+            7 => 'translation.categories.name.theater',
+            8 => 'translation.categories.name.walk',
+            9 => 'translation.categories.name.nightride',
+            10 => 'translation.categories.name.cinema',
+            11 => 'translation.categories.name.movie',
+            12 => 'translation.categories.name.date',
+            13 => 'translation.categories.name.cooking',
 
-            14 => 'Vacation',
-            15 => 'Trip',
-            16 => 'Trip to the mountains',
+            14 => 'translation.categories.name.vacation',
+            15 => 'translation.categories.name.trip',
+            16 => 'translation.categories.name.mountains',
 
-            17 => 'Cycling',
-            18 => 'Diving',
-            19 => 'Climbing',
-            20 => 'Football',
-            21 => 'Basketball',
-            22 => 'Skating',
-            23 => 'Jogging',
-            24 => 'Sparring partner',
-            25 => 'Martial arts',
-            26 => 'Tennis',
-            27 => 'Ping pong',
+            17 => 'translation.categories.name.cycling',
+            18 => 'translation.categories.name.diving',
+            19 => 'translation.categories.name.climbing',
+            20 => 'translation.categories.name.football',
+            21 => 'translation.categories.name.basketball',
+            22 => 'translation.categories.name.skate',
+            23 => 'translation.categories.name.jogging',
+            24 => 'translation.categories.name.sparring',
+            25 => 'translation.categories.name.mma',
+            26 => 'translation.categories.name.tennis',
+            27 => 'translation.categories.name.pingpong',
 
         ];
 
@@ -110,7 +110,39 @@ class CategorySeeder extends Seeder
             25 => '/storage/Categories/Martial arts/jiu-jitsu-athletes-fighting_23-2148684558.jpg',
             26 => '/storage/Categories/Tennis/tennis-player-sport-illustration_2175-4571.jpg',
             27 => '/storage/Categories/Ping pong/people-playing-table-tennis_23-2148655541.jpg',
+        ];
 
+        $description = [
+            1 => 'translation.categories.desc.dog',
+            2 => 'translation.categories.desc.horse',
+            3 => 'translation.categories.desc.fish',
+
+            4 => 'translation.categories.desc.beer',
+            5 => 'translation.categories.desc.match',
+            6 => 'translation.categories.desc.dancing',
+            7 => 'translation.categories.desc.theater',
+            8 => 'translation.categories.desc.walk',
+            9 => 'translation.categories.desc.nightride',
+            10 => 'translation.categories.desc.cinema',
+            11 => 'translation.categories.desc.movie',
+            12 => 'translation.categories.desc.date',
+            13 => 'translation.categories.desc.cooking',
+
+            14 => 'translation.categories.desc.vacation',
+            15 => 'translation.categories.desc.trip',
+            16 => 'translation.categories.desc.mountains',
+
+            17 => 'translation.categories.desc.cycling',
+            18 => 'translation.categories.desc.diving',
+            19 => 'translation.categories.desc.climbing',
+            20 => 'translation.categories.desc.football',
+            21 => 'translation.categories.desc.basketball',
+            22 => 'translation.categories.desc.skate',
+            23 => 'translation.categories.desc.jogging',
+            24 => 'translation.categories.desc.sparring',
+            25 => 'translation.categories.desc.mma',
+            26 => 'translation.categories.desc.tennis',
+            27 => 'translation.categories.desc.pingpong',
 
         ];
 
@@ -118,7 +150,8 @@ class CategorySeeder extends Seeder
             DB::table('categories')->insert([
                 'categoryName' => $categories, 
                 'categoryType' => $types[$category],
-                'categoryIMG' => $images[$category],               
+                'categoryIMG' => $images[$category],
+                'categoryDesc' => $description[$category],              
                 'created_at' => $generator->dateTime(),
                 'updated_at' => $generator->dateTime(),
             ]);

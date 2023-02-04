@@ -23,8 +23,9 @@
                                         <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
                                             <p class="small mb-0">{{ message }}</p>
                                         </div>
-                                        <img :src="'/storage/images/usersPhotos/'+user.photo"
-                                            alt="avatar 1" style="width: 45px; height: 100%;">
+                                        <img v-if="user.photo" :src="'/storage/images/usersPhotos/'+user.photo" alt="" style="width: 45px; height: 100%;"/>
+						                <img v-else :src="'/storage/images/usersPhotos/placeholder.png'" alt="" style="width: 45px; height: 100%;"/>
+
                                     </div>
                                     <div class="d-flex flex-row justify-content-start mb-4">
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
@@ -59,13 +60,13 @@
 
 <script>
     export default {
-        props: ['user','idrec'],
+        props: ['user','idrec','announcement'],
 
         data() {
             return {
                 newMessage: '',                
                 activeid: this.idrec,
-                message: '',
+                message: '',                
             }
         },
         
@@ -74,8 +75,8 @@
             redirect(){
                 window.location.assign('http://localhost:8000/search_announcement');
             },
-            sendMessage() {
-            axios.post('/private-messagepoke/' + this.activeid.id, {message: this.newMessage}).then(response => {
+            sendMessage() {                
+            axios.post('/private-messagepoke/' + this.activeid.id, {message: this.newMessage, announcement: this.announcement.id}).then(response => {
                 this.message = this.newMessage;
                 this.newMessage = '';
                 //this.messages.push(response.data.message);
