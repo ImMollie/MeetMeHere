@@ -450,11 +450,11 @@ window.Modal = function() {
         $("#longitude").val(marker.getPosition().lng());
 
     });
-    currentLat = $("#latitude").val();
-    currentLng = $("#longitude").val();
+    var currentLat = $("#latitude").val();
+    var currentLng = $("#longitude").val();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            pos = {
+            var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
@@ -469,7 +469,7 @@ window.Modal = function() {
 
 window.geocodePosition = function (pos) {
 
-    geocoder = new google.maps.Geocoder();
+    var geocoder = new google.maps.Geocoder();
     geocoder.geocode({
             latLng: pos
         },

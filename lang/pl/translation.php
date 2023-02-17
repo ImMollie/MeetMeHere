@@ -86,7 +86,8 @@ return [
         'sport' => 'Sport',
         'travells' => 'Podróże',
         'all' => 'Wszystkie',
-        'wearepeople' => 'Wszyscy jesteśmy ludźmi',
+        'wearepeople' => 'Jesteśmy ludźmi',
+        'about' => 'Ludzie są istotami społecznymi i potrzebują regularnych kontaktów z innymi ludźmi, aby utrzymywać zdrowe relacje i dobre samopoczucie. Spotkania z przyjaciółmi, rodziną i innymi osobami pozwalają nam na wymianę myśli, uczuć i doświadczeń, co może mieć pozytywny wpływ na nasze zdrowie psychiczne i emocjonalne. Bez socjalizacji, ludzie często czują się samotni i odizolowani, co może prowadzić do poważnych problemów zdrowotnych. Dlatego ważne jest, aby zachować kontakt z innymi i regularnie uczestniczyć w spotkaniach społecznych.',
         'or' => 'lub',
         'header' =>
         [
@@ -159,6 +160,7 @@ return [
             'mountains' => 'Halo? nie moge rozmawiać - jestem w górach.',
             'cycling' => 'Rundka dla zdrowia czy ambitna podróż do celu? Znajdź dla siebie kompana!',
             'diving' => 'Kto wie co kryje się na dnie?',
+            'climbing' => 'Tylko nie patrz w dól!',
             'football' => 'Zorganizuj drużyne i graj!',
             'basketball' => 'Zorganizuj drużyne i graj!',
             'skate' => 'Samemu to nie to samo...kto gra w SKATE?',

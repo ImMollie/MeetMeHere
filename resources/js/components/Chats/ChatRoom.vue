@@ -140,11 +140,11 @@ import { throwStatement } from '@babel/types';
                     this.users = response.data;
                 });
             },
-            sendMessage() {
-				if(this.newMessage != '' && this.activeid != null)
-            	axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
-                this.newMessage = '';
-                //this.messages.push(response.data.message);
+
+        sendMessage() {
+		if(this.newMessage != '' && this.activeid != null)
+            axios.post('/private-message/' + this.activeid, {message: this.newMessage}).then(response => {
+                this.newMessage = '';                
                 this.fetchMessages(this.activeid,this.activeUser);
 				setTimeout(this.scrollToEnd,100);
             });

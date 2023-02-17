@@ -46,15 +46,15 @@
                         <div id="collapse2" style="margin-left:24px;" class="accordion-collapse collapse ml-4"
                                 aria-labelledby="heading6" data-bs-parent="#accordionExample">
                             <div class="form-group form-check pl-4">
-                                <input type="checkbox" class="form-check-input file_checkbox" value="1">
+                                <input type="radio" class="form-check-input amount_radio" name="amount" value="1">
                                 <label class="form-check-label"> 1</label>
                             </div>
                             <div class="form-group form-check pl-4">
-                                <input type="checkbox" class="form-check-input file_checkbox" value="2">
+                                <input type="radio" class="form-check-input amount_radio" name="amount" value="2">
                                 <label class="form-check-label"> 2</label>
                             </div>
                             <div class="form-group form-check pl-4">
-                                <input type="checkbox" class="form-check-input file_checkbox" value="all">
+                                <input type="radio" class="form-check-input amount_radio" name="amount" value="all">
                                 <label class="form-check-label"> {{__('translation.addAnnouncement.more')}}</label>
                             </div>
                         </div>                        
@@ -73,41 +73,12 @@
                                 <div class="card-body">
                                     <label style="font-size: 12px;">{{__('translation.searchAnnouncement.kilometers')}}</label>
                                     <div class="range-slider">
-                                        <input class="range-slider__range" type="range" value="0" min="0" max="100">
+                                        <input class="range-slider__range" type="range" value="0" min="0" max="100" id="range">
                                         <span class="range-slider__value">0</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-2 mb-2" style="border-top: 2px dashed #222831;"></div>                        
-                                <div class="form-group">
-                                    <input type="text" id="address" class="form-control" name="address" placeholder="Exact localization"
-                                        readonly>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="hidden" id="latitude" name="latitude">
-                                    <input type="hidden" id="longitude" name="longitude">
-                                    <input class="quiz_localization" type="button" value="{{__('translation.addAnnouncement.buttons.localization')}}" onclick="Modal()">
-                                </div>
-                                <div class="modal fade" id="location-modal" tab-index="-1" role="dialog"
-                                    aria-labelled="location-modal" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-info text-white">
-                                                <h5 class="modal-title" id="address-label">{{__('translation.addAnnouncement.buttons.localization')}}</h5>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times</span>
-                                                </button>
-                                            </div>            
-                                            <div class="modal-body">
-                                                <div id="map"></div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-info" data-bs-dismiss="modal"><i
-                                                        class="fa fa-check"></i>Done</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
                     </div>
                     <div class="mt-2 mb-2" style="border-top: 2px dashed #222831;"></div>
@@ -124,8 +95,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="form-check-label" for="date1">{{__('translation.addAnnouncement.date1')}}</label>
-                                        <input type="date" id="date1" class="form-control" min="{{ date('Y-m-d') }}"
-                                            name="date">
+                                        <input type="date" id="date1" class="form-control" min="{{ date('Y-m-d') }}" name="date1">
                                         <div class="form-check">
                                             <input class="form-check-input" name="oneDay" id="oneDay" type="checkbox"
                                                 onchange="dateDisabled()">
@@ -150,8 +120,9 @@
 @endsection
 
 @push('scripts')
-    <script type="module">
+    <script type="module">        
     $(document).ready(function(){
+        
         var myCarousel = document.querySelector('#carouselExampleSlidesOnly')
         var carousel = new bootstrap.Carousel(myCarousel)
 
@@ -190,11 +161,11 @@ window.Modal = function() {
         $("#longitude").val(marker.getPosition().lng());
 
     });
-    currentLat = $("#latitude").val();
-    currentLng = $("#longitude").val();
+    var currentLat = $("#latitude").val();
+    var currentLng = $("#longitude").val();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            pos = {
+            var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
@@ -209,7 +180,7 @@ window.Modal = function() {
 
 window.geocodePosition = function (pos) {
 
-    geocoder = new google.maps.Geocoder();
+    var geocoder = new google.maps.Geocoder();
     geocoder.geocode({
             latLng: pos
         },
@@ -246,6 +217,12 @@ window.geocodePosition = function (pos) {
 
     var storageClicks = [];
     var counter;
+    var amountPeople;
+    var range;
+    var date1;
+    var date2;  
+    var oneDayChoose = false;
+
     var checboxCategoryAll = document.getElementsByClassName("all_checkbox");
     for(var i = 0; i < checboxCategoryAll.length; i++){
         checboxCategoryAll[i].addEventListener("click",checkClicks);
@@ -258,12 +235,62 @@ window.geocodePosition = function (pos) {
         }
         if(e.target.checked){
             storageClicks.push(e.target.value);
-            $.ajax({  
+            send(storageClicks, amountPeople, range, date1, date2, oneDayChoose);
+        }
+    }  
+
+    var amountAll = document.getElementsByClassName("amount_radio");
+    for(var i = 0; i < amountAll.length; i++){
+        amountAll[i].addEventListener("click",checkAmount);
+    }
+    function checkAmount(e){
+        if(e.target.checked){            
+            amountPeople = e.target.value;            
+        }else amountPeople = null;
+        send(storageClicks, amountPeople, range, date1, date2, oneDayChoose);
+    }
+
+    var timeout;
+    $(this).on('input change','#range',function(){
+        clearTimeout(timeout);        
+        timeout = setTimeout(() => {
+            range = $(this).val();        
+        send(storageClicks, amountPeople, range, date1, date2, oneDayChoose);
+        }, 1000);
+        
+        
+    });
+
+    $(this).on('input','#date1',function(){
+        date1 = $(this).val();
+        send(storageClicks, amountPeople, range, date1, date2, oneDayChoose);
+    });
+    $(this).on('input','#date2',function(){
+        date2 = $(this).val();
+        send(storageClicks, amountPeople, range, date1, date2, oneDayChoose);
+    });   
+
+    $('#oneDay').click(function(){        
+        if(this.checked){
+            oneDayChoose = true;         
+        }else oneDayChoose = false;
+        send(storageClicks, amountPeople, range, date1, date2, oneDayChoose);
+    });
+        
+
+    function send(storageClicks, amountPeople, range, date1, date2, oneDayChoose){
+        $.ajax({  
                 type: 'POST',
                 url: '{{ route('filterAnnouncement') }}',                    
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     data: storageClicks,
+                    amount: amountPeople,
+                    range: range,
+                    date1: date1,
+                    date2: date2,
+                    oneDay: oneDayChoose,
+
                 },
                 success: function(data){
                     if(data){
@@ -272,24 +299,7 @@ window.geocodePosition = function (pos) {
                 }
             }
             })
-        }else if (!e.target.checked){
-            $.ajax({                
-                type: 'POST',
-                url: '{{ route('chatRoom') }}',                    
-                data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    data: storageClicks,
-                },
-                success: function(data){
-                    if(data){
-                    $(".announcement_container").html("");
-                    $(".announcement_container").html(data);                    
-                }
-            }
-            }) 
-        }
-    }   
-
+    }
     });
 </script>
 @endpush

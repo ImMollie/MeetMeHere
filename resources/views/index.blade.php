@@ -150,14 +150,8 @@
                                 {{__('translation.index.wearepeople')}}
                             </h2>
                         </div>
-                        <p>
-                            There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                            alteration
-                            in some form, by injected humour, or randomised words which don't look even slightly believable.
-                            If you
-                            are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                            hidden in
-                            the middle of text. All
+                        <p style="margin-right: 150px; margin-left: 150px;">
+                            {{__('translation.index.about')}}
                         </p>
                     </div>
     </div>
@@ -238,10 +232,8 @@
      </div> --}}
             <div class="footer-info">
                 <p>
-                    &copy; <span id="displayYear"></span> All Rights Reserved By
-                    <a href="https://html.design/"></a><br><br>
-                    &copy; <span id="displayYear"></span> Distributed By
-                    <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+                    <a href="https://themewagon.com/" target="_blank">Every picture designed By</a><br>
+                    &copy; <span id="displayYear"></span> Freepik                    
                 </p>
             </div>
         </div>

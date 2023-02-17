@@ -13,7 +13,7 @@
         <div class="d-flex flex-column mt-1 text-center detail-box2">
             <h5>
                 @foreach ($announcement->categoryOfAnnouncement2 as $item)
-                    {{ __($item->categoryAnnouncement->categoryName) }}
+                    {{ __($item->categoryAnnouncement->categoryName) }}<br>
                 @endforeach
             </h5>
             <div class="mt-1 mb-1 text-center">

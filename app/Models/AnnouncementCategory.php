@@ -13,7 +13,7 @@ class AnnouncementCategory extends Model
     protected $guarded = [];
     public function announcementCategory()
     {
-        return $this->hasMany(Announcement::class,'id','announcement_id');        
+        return $this->hasMany(Announcement::class,'id','announcement_id');       
     }
     public function categoryAnnouncement()
     {

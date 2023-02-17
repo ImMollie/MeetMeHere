@@ -91,6 +91,7 @@ return [
         'travells' => 'Travells',
         'all' => 'All',
         'wearepeople' => 'We are people',
+        'about' => 'People are social beings and need regular contact with other people to maintain healthy relationships and well-being. Meetings with friends, family, and others allow us to exchange thoughts, feelings, and experiences, which can have a positive impact on our mental and emotional health. Without socialization, people often feel lonely and isolated, which can lead to serious health problems. Thats why its important to maintain contact with others and regularly participate in social gatherings.',
         'or' => 'lub',
         'header' =>
         [
@@ -163,6 +164,7 @@ return [
             'mountains' => 'Hello? I cant talk - Im in the mountains.',
             'cycling' => 'A round for health or an ambitious journey to destination? Find a companion for you!',
             'diving' => 'Who knows whats at the bottom?',
+            'climbing' => 'Just dont look down!',
             'football' => 'Organize a team and play!',
             'basketball' => 'Organize a team and play!',
             'skate' => 'Alone its not the same...who plays SKATE?',

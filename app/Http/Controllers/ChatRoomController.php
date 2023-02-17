@@ -28,18 +28,18 @@ class ChatRoomController extends Controller
         return view('chatRoom');
     }
 
-    public function users()
-    {  
-        $test = [];
+    public function users(){  
+        $arr = [];
         $messages = Message::where('receiver_id',Auth::user()->id)->select('user_id')->groupBy('user_id')->get(); 
         foreach ($messages as $message) {
             $userMessage = User::select('id','firstname','lastname','slug','photo','facebook','twitter','instagram')->where('id', $message->user_id)->first();            
             $userMessage['allMessages'] = $userMessage->allMessages()->sortBy('id')->flatten();            
-            array_push($test, $userMessage);
-        }
-        //dd($test);
-        return $test;
+            array_push($arr, $userMessage);
+        }        
+        return $arr;
     }
+
+
 
     public function currentUsers($poke)
     {     

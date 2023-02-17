@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
+        "php-ds/php-ds": "^1.4",
         "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {

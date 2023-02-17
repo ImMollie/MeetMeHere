@@ -28,21 +28,26 @@
                         <a class="nav-link" href="{{ route('myMeetings') }}">{{__('translation.index.header.meetings')}}</a>
                     </li>
                 </ul>
-                <div class="user_option">                    
-                    <i class="position-relative notification-btn fa-solid fa-bell" style="color: white;">                        
+                <div class="user_option"> 
+                    @if(Auth::check())                   
+                    <i class="position-relative notification-btn fa-solid fa-bell" style="color: white;">   
+                    @else <i class="position-relative notification-btn fa-solid fa-bell" style="color: white; margin: 0 10px">
+                        @endif 
+                        @auth                    
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             @if(isset($notification))
                                 {{ count($notification) }}
                             @endif
                             <span class="visually-hidden">unread messages</span>
                         </span>
+                        @endauth
                     </i>                    
-                    
+                    @auth
                     <!-- Notification dropdown -->
                     <div class="navbar-nav dropdown">
                         <div class="notification-dropdown collapse" aria-expanded="false">
                             <div class="notBtn" href="#">   
-                                @auth                                   
+                                                                   
                                     <div class="box2">                                        
                                         <div class="display">                                                
                                             <div class="cont readNotification">
@@ -72,10 +77,11 @@
                                             </div>                                                
                                         </div>
                                     </div>
-                                @endauth                                                            
+                                                                                            
                             </div>
                         </div>
                     </div>
+                    @endauth
                     <a href="{{ route('chatRoom') }}" class="user_link">
                         <i class="fa-solid fa-comments" aria-hidden="true"></i>
                     </a>
